@@ -4,8 +4,8 @@
     <!--NAVIGATION DRAWER-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_TenKH">Tên Khách Hàng</string>
+    <string name="nav_SDT">Số Điện Thoại</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -27,11 +27,12 @@
     <string name="a2_btnChange">Thay đổi</string>
     <string name="a2_btnCancel">Hủy</string>
 
-    <!---->
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_main3">Main3Activity</string>
+    <!--BOTTOM NAVIGATION-->
+    <string name="bottom_Home">Trang chủ</string>
+    <string name="bottom_Scan">Scan</string>
+    <string name="bottom_Report">Thống kê</string>
+
+    <!--MAIN ACTIVITY-->
+    <string name="title_activity_main">Màn hình chính</string>
 
 </resources>
