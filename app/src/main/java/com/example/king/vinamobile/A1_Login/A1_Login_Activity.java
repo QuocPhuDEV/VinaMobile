@@ -48,6 +48,12 @@ public class A1_Login_Activity extends AppCompatActivity {
         askPermission();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        edPassword.setText(null);
+    }
+
     //region ÁNH XẠ ĐỐI TƯỢNG
     public void addEvents() {
         edUser = (EditText) findViewById(R.id.a1_edUsername);
