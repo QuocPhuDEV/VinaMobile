@@ -7,7 +7,7 @@
     <string name="nav_TenKH">Tên Khách Hàng</string>
     <string name="nav_SDT">Số Điện Thoại</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Thiết lập phần mềm</string>
 
     <!--LOGIN-->
     <string name="a1_edUser">Số điện thoại</string>
