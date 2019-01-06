@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Vina Mobile</string>
+
+    <!--NAVIGATION DRAWER-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!--LOGIN-->
+    <string name="a1_edUser">Số điện thoại</string>
+    <string name="a1_edPassword">Mật khẩu</string>
+    <string name="a1_btnLogin">Đăng nhập</string>
+    <string name="a1_btnCancel">Thoát</string>
+    <string name="a1_chkShowPass">Hiển thị mật khẩu</string>
+    <string name="a1_error_wrong_pass">Mật khẩu không đúng, hãy thử lại!</string>
+    <string name="a1_error_empty">Số điện thoại hoặc mật khẩu không được để rỗng</string>
+    <string name="a1_error_permissions">Bạn chưa gán quyền truy cập Số Điện Thoại \nỨng dụng không thể đăng nhập.</string>
+
+    <!--CHANGE PASSWORD-->
+    <string name="a2_edUser">Số điện thoại</string>
+    <string name="a2_edPassword">Mật khẩu cũ</string>
+    <string name="a2_edPassword2">Mật khẩu mới</string>
+    <string name="a2_edPassword3">Xác nhận mật khẩu</string>
+    <string name="a2_btnChange">Thay đổi</string>
+    <string name="a2_btnCancel">Hủy</string>
+
+    <!---->
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main3">Main3Activity</string>
+
+</resources>
