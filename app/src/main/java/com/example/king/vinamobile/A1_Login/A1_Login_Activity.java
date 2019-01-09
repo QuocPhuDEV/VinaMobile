@@ -44,7 +44,7 @@ public class A1_Login_Activity extends AppCompatActivity {
     public static final int REQUEST_ID_PHONE_NUMBER = 100;
 
     //public static final String URL = "https://next.json-generator.com/api/json/get/Vk0DSK0-U";
-    public static final String URL = "http://www.json-generator.com/api/json/get/cfraJdJAGG?indent=2";
+    public static final String URL = "http://www.json-generator.com/api/json/get/cenQYrriTC?indent=2";
 
 
     //endregion
