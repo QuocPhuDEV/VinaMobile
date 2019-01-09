@@ -1,5 +1,6 @@
 package com.example.king.vinamobile.A_Json;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,16 +31,30 @@ public class JsonReader {
      * @return - Trả về JSONOBject
      */
 
-    public static JSONObject readFileJsonFromUrl(String url) throws IOException, JSONException {
+//    public static JSONObject readFileJsonFromUrl(String url) throws IOException, JSONException {
+//        InputStream inputStream = new URL(url).openStream();
+//        try {
+//            // đọc nội dung file với Unicode:
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+//            String jsonData = readAll(reader);
+//            JSONObject jsonObject = new JSONObject(jsonData);
+//            return jsonObject;
+//        } finally {
+//            inputStream.close();
+//        }
+//    }
+
+    public static JSONArray readFileJsonFromUrl(String url) throws IOException, JSONException {
         InputStream inputStream = new URL(url).openStream();
         try {
             // đọc nội dung file với Unicode:
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
             String jsonData = readAll(reader);
-            JSONObject jsonObject = new JSONObject(jsonData);
+            JSONArray jsonObject = new JSONArray(jsonData);
             return jsonObject;
         } finally {
             inputStream.close();
         }
     }
+
 }

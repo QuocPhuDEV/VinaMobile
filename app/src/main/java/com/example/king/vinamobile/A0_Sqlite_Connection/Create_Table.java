@@ -1,13 +1,17 @@
 package com.example.king.vinamobile.A0_Sqlite_Connection;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
+
+import org.json.JSONObject;
 
 public class Create_Table extends SQLiteOpenHelper {
     //region KHAI BÁO BIẾN TOÀN CỤC
@@ -162,7 +166,7 @@ public class Create_Table extends SQLiteOpenHelper {
     }
     //endregion
 
-    //region SEARCH DỮ LIỆU
+    //region SEARCH, DELETE, SYNC DỮ LIỆU
 
     // Kiểm tra tồn tại account
     public int checkExistsAccount(String sdt, String pass) {
@@ -183,5 +187,43 @@ public class Create_Table extends SQLiteOpenHelper {
             return 0;
         }
     }
+
+    // Xoá dữ liệu trong bảng table
+    public void deleteDataAccount() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.delete(TABLE_NAME_ACCOUNT, null, null);
+        database.close();
+    }
+
+    // Đồng bộ dữ liệu từ Json về SQLite database
+    public void syncAccount(JSONObject jsonObject) {
+        try {
+            // Xoá dữ liệu cũ trước khi sync
+            //deleteDataAccount();
+
+            // bắt đầu thực hiện sync
+            ContentValues values = new ContentValues();
+            SQLiteDatabase database = this.getWritableDatabase();
+
+            values.put(TBT_ACCOUNT_NGAYTAO, jsonObject.getString("Ngaytao"));
+            values.put(TBT_ACCOUNT_NGAYCN, jsonObject.getString("NgayCN"));
+            values.put(TBT_ACCOUNT_SDT, jsonObject.getString("SDT"));
+            values.put(TBT_ACCOUNT_PASSWORD, jsonObject.getString("MatKhau"));
+            values.put(TBT_ACCOUNT_MAKH, jsonObject.getString("MaKH"));
+            values.put(TBT_ACCOUNT_TENKH, jsonObject.getString("TenKH"));
+            values.put(TBT_ACCOUNT_DIACHI, jsonObject.getString("DiaChi"));
+
+            // Thêm dữ liệu lấy được từ Json vào bảng Account
+            database.insert(TABLE_NAME_ACCOUNT, null, values);
+
+            // Đóng kết nối
+            database.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //endregion
+
 }

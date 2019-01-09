@@ -18,6 +18,7 @@
     <string name="a1_error_wrong_pass">Mật khẩu không đúng, hãy thử lại!</string>
     <string name="a1_error_empty">Số điện thoại hoặc mật khẩu không được để rỗng</string>
     <string name="a1_error_permissions">Bạn chưa gán quyền truy cập Số Điện Thoại \nỨng dụng không thể đăng nhập.</string>
+    <string name="a1_progress_sync">Đang đồng bộ dữ liệu, vui lòng chờ....</string>
 
     <!--CHANGE PASSWORD-->
     <string name="a2_edUser">Số điện thoại</string>

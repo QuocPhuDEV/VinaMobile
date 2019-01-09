@@ -1,9 +1,12 @@
 package com.example.king.vinamobile.A1_Login;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -21,18 +24,27 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.king.vinamobile.A0_Sqlite_Connection.Create_Table;
+import com.example.king.vinamobile.A_Json.JsonReader;
 import com.example.king.vinamobile.MainActivity;
 import com.example.king.vinamobile.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.io.IOException;
+
 public class A1_Login_Activity extends AppCompatActivity {
-    //region Khai báo biến toàn cục
+    //region KHAI BÁO BIẾN TOÀN CỤC
     private EditText edUser, edPassword;
     private Button btnLogion, btnCancel;
     private CheckBox chkShowPass;
 
     public static final int REQUEST_ID_PHONE_NUMBER = 100;
+
+    //public static final String URL = "https://next.json-generator.com/api/json/get/Vk0DSK0-U";
+    public static final String URL = "http://www.json-generator.com/api/json/get/cfraJdJAGG?indent=2";
 
 
     //endregion
@@ -43,9 +55,14 @@ public class A1_Login_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a1__login_);
 
+        // Ánh xạ đối tượng
         addEvents();
+        // Tạo dữ liệu mặc định
         CreateDefaultData();
+        // Hỏi quyền truy cập của ứng dụng
         askPermission();
+        // Đồng bộ dữ liệu
+        SyncAccountNow();
     }
 
     @Override
@@ -71,6 +88,20 @@ public class A1_Login_Activity extends AppCompatActivity {
         try {
             Create_Table createTable = new Create_Table(this);
             createTable.CreateDefaultAccount(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Gọi phương thức đồng bộ
+    public void SyncAccountNow() {
+        try {
+            // Xoá dữ liệu trong bảng account
+            Create_Table create_table = new Create_Table(this);
+            create_table.deleteDataAccount();
+
+            // đồng bộ dữ liệu mới
+            new MyJsonTask().execute(URL);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -210,6 +241,88 @@ public class A1_Login_Activity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, R.string.a1_error_permissions, Toast.LENGTH_LONG).show();
                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Xử lý đa tiến trình
+    public class MyJsonTask extends AsyncTask<String, JSONObject, Void> {
+        public ProgressDialog dialog = new ProgressDialog(A1_Login_Activity.this);
+
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage(getString(R.string.a1_progress_sync));
+            dialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+
+            // Lấy url truyền vào
+            String url = strings[0];
+            JSONObject jsonObject;
+            try {
+                // Đọc Json và chuyển về Object
+//                jsonObject = JsonReader.readFileJsonFromUrl(url);
+//                publishProgress(jsonObject);
+
+                JSONArray jsonArray = JsonReader.readFileJsonFromUrl(url);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+                    publishProgress(object);
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(JSONObject... values) {
+            super.onProgressUpdate(values);
+
+            try {
+                //Get dữ liệu
+                JSONObject jsonObject = values[0];
+
+                //JSONObject object = jsonObject.getJSONObject("");
+
+                SyncData(jsonObject);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            dialog.dismiss();
+        }
+    }
+
+    // Kiểm tra kết nối internet
+    private boolean isNetWorkConnected() {
+        try {
+            // Kiểm tra kết nối, trả về true nếu có kết nối internet
+            ConnectivityManager cn = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            return cn.getActiveNetworkInfo() != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Thực hiện đồng độ dữ liệu nếu có kết nối internet
+    public void SyncData(JSONObject jsonObject) {
+        try {
+            if (isNetWorkConnected()) {
+                Create_Table create_table = new Create_Table(this);
+                create_table.syncAccount(jsonObject);
             }
         } catch (Exception e) {
             e.printStackTrace();

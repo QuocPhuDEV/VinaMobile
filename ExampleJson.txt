@@ -1,0 +1,40 @@
+[
+  {
+    Ngaytao: "5/01/2019",
+    NgayCN: "7/1/2019",
+    SDT:"0348753257",
+    MatKhau:"123",
+    MaKH:"KH01",
+    TenKH:"Hoàng Quốc Phú",
+    DiaChi:"Dĩ An, Bình Dương"
+  },
+    {
+    Ngaytao: "5/01/2019",
+    NgayCN: "7/1/2019",
+    SDT:"0903166183",
+    MatKhau:"321",
+    MaKH:"KH02",
+    TenKH:"Nguyễn Mộng Nga",
+    DiaChi:"Quận 9, TP.HCM"
+  },  
+  {
+    Ngaytao: "5/01/2019",
+    NgayCN: "7/1/2019",
+    SDT:"113",
+    MatKhau:"113",
+    MaKH:"KH03",
+    TenKH:"Nguyễn Đăng Long",
+    DiaChi:"Quận 9, TP.HCM"
+  },
+  {
+    Ngaytao: "5/01/2019",
+    NgayCN: "7/1/2019",
+    SDT:"114",
+    MatKhau:"114",
+    MaKH:"KH04",
+    TenKH:"Hồ Minh Thành",
+    DiaChi:"Long An"
+  }
+]
+
+https://next.json-generator.com/api/json/get/Vk0DSK0-U
