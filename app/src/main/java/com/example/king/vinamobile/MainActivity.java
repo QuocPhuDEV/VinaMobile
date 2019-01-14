@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.bottom_information:
-                    //mTextMessage.setText(R.string.bottom_Home);
+                    mTextMessage.setText(R.string.bottom_Information);
                     return true;
                 case R.id.bottom_scan:
-                    // mTextMessage.setText(R.string.title_dashboard);
+                    mTextMessage.setText(R.string.bottom_Scan);
                     return true;
                 case R.id.bottom_inventory:
                     //mTextMessage.setText(R.string.title_notifications);
@@ -76,16 +76,9 @@ public class MainActivity extends AppCompatActivity
         navigation.setItemIconTintList(null);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+    //region LOAD FORM
 
+    // load menu phải
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -107,6 +100,21 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    //endregion
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
