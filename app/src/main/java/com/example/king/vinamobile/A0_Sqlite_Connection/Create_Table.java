@@ -169,7 +169,8 @@ public class Create_Table extends SQLiteOpenHelper {
     //region SEARCH, DELETE, SYNC DỮ LIỆU
 
     // Kiểm tra tồn tại account
-    public int checkExistsAccount(String sdt, String pass) {
+    public boolean checkExistsAccount(String sdt, String pass) {
+        boolean result = false;
         try {
             String script = "SELECT * FROM " + TABLE_NAME_ACCOUNT +
                     " WHERE SDT = '" + sdt + "' and MatKhau = '" + pass + "' ";
@@ -181,10 +182,13 @@ public class Create_Table extends SQLiteOpenHelper {
             cursor.close();
 
             // return count
-            return count;
+            if (count > 0){
+                result = true;
+            }
+            return result;
         } catch (Exception e) {
             e.printStackTrace();
-            return 0;
+            return result;
         }
     }
 

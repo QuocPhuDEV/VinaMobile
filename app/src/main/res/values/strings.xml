@@ -27,6 +27,9 @@
     <string name="a2_edPassword3">Xác nhận mật khẩu</string>
     <string name="a2_btnChange">Thay đổi</string>
     <string name="a2_btnCancel">Hủy</string>
+    <string name="a2_error_notExistsPass">Mật khẩu cũ không đúng</string>
+    <string name="a2_error_donotMatch">Mật khẩu mới không khớp</string>
+    <string name="a2_error_length">Độ dài mật khẩu không phù hợp</string>
 
     <!--BOTTOM NAVIGATION-->
     <string name="bottom_Home">Trang chủ</string>

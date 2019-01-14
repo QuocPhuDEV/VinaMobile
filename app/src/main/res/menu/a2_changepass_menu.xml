@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/a2_item_change_pass"
+        app:showAsAction="always"
+        android:icon="@drawable/a1_image_changepass_menu"
+        android:title="SignIn" />
+</menu>

@@ -17,6 +17,9 @@ import android.telephony.TelephonyManager;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,6 +27,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.king.vinamobile.A0_Sqlite_Connection.Create_Table;
+import com.example.king.vinamobile.A2_Change_Password.A2_ChangePass_Activity;
 import com.example.king.vinamobile.A_Json.JsonReader;
 import com.example.king.vinamobile.MainActivity;
 import com.example.king.vinamobile.R;
@@ -106,6 +110,27 @@ public class A1_Login_Activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    // Load menu change password
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.a2_changepass_menu, menu);
+        return true;
+    }
+
+    // Mở màn hình change password
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.a2_item_change_pass) {
+            Intent intent = new Intent(this, A2_ChangePass_Activity.class);
+            intent.putExtra("phoneNumber", edUser.getText().toString());
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     //endregion
 
     //region XỬ LÝ EVENTS
@@ -115,14 +140,14 @@ public class A1_Login_Activity extends AppCompatActivity {
         try {
             String sdt = edUser.getText().toString();
             String pass = edPassword.getText().toString();
-            int result;
+            boolean result;
 
             // Kiểm tra rỗng
             if (checkKeycode()) {
                 Create_Table account = new Create_Table(this);
                 result = account.checkExistsAccount(sdt, pass);
 
-                if (result > 0) {
+                if (result) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
                     //Toast.makeText(this, "go", Toast.LENGTH_SHORT).show();
