@@ -2,17 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/nav_menu_inventory"
-        android:title="@string/bottom_Home" />
+        android:id="@+id/bottom_information"
+        android:icon="@drawable/nav_menu_information"
+        android:title="@string/bottom_Information" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/bottom_scan"
         android:icon="@drawable/nav_menu_scan"
         android:title="@string/bottom_Scan" />
 
     <item
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/bottom_inventory"
+        android:icon="@drawable/nav_menu_inventory"
+        android:title="@string/bottom_Inventory" />
+
+    <item
+        android:id="@+id/bottom_report"
         android:icon="@drawable/nav_menu_report"
         android:title="@string/bottom_Report" />
 

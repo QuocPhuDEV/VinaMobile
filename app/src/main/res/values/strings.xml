@@ -32,8 +32,9 @@
     <string name="a2_error_length">Độ dài mật khẩu không phù hợp</string>
 
     <!--BOTTOM NAVIGATION-->
-    <string name="bottom_Home">Trang chủ</string>
+    <string name="bottom_Information">Thông tin</string>
     <string name="bottom_Scan">Scan</string>
+    <string name="bottom_Inventory">Tồn kho</string>
     <string name="bottom_Report">Thống kê</string>
 
     <!--MAIN ACTIVITY-->

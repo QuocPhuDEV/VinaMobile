@@ -5,19 +5,19 @@
 
     <!--<group android:checkableBehavior="single">-->
     <item
-        android:id="@+id/nav_manage"
+        android:id="@+id/nav_input"
         android:icon="@drawable/nav_menu_input_warehouse"
         android:title="Nhập kho" />
     <item
-        android:id="@+id/nav_camera"
+        android:id="@+id/nav_scan"
         android:icon="@drawable/nav_menu_scan"
         android:title="Sản phầm đã Scan" />
     <item
-        android:id="@+id/nav_gallery"
+        android:id="@+id/nav_inventory"
         android:icon="@drawable/nav_menu_inventory"
         android:title="Tồn kho" />
     <item
-        android:id="@+id/nav_slideshow"
+        android:id="@+id/nav_report"
         android:icon="@drawable/nav_menu_report"
         android:title="Thống kê / Báo cáo" />
 
@@ -26,11 +26,11 @@
     <item android:title="Thông tin cá nhân">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_account"
                 android:icon="@drawable/nav_menu_account"
                 android:title="Tài khoản" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/nav_menu_logout"
                 android:title="Đăng xuất" />
         </menu>

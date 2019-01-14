@@ -63,6 +63,7 @@
                     android:background="@android:color/white"
                     android:hint="@string/a1_edUser"
                     android:paddingLeft="10dp"
+                    android:text="113"
                     android:textColor="#0033FF"
                     android:textColorHint="@color/dodger_blue" />
             </LinearLayout>

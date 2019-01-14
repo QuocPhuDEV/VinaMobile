@@ -27,13 +27,16 @@ public class MainActivity extends AppCompatActivity
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.bottom_information:
                     //mTextMessage.setText(R.string.bottom_Home);
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.bottom_scan:
                     // mTextMessage.setText(R.string.title_dashboard);
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.bottom_inventory:
+                    //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.bottom_report:
                     //mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -111,17 +114,17 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_input) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_scan) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_inventory) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_report) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_account) {
+
+        } else if (id == R.id.nav_logout) {
 
         }
 
