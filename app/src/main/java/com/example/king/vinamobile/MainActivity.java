@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
+import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity
                     toolbar.setTitle(getString(R.string.bottom_Scan));
 
                     // Gọi màn hình
-                    fragment = new A3_Scan_Fragment();
+                    fragment = new A3_Scan_Home_Fragment();
                     loadFragment(fragment);
 
                     return true;
