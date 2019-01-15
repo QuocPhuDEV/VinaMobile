@@ -3,8 +3,11 @@ package com.example.king.vinamobile;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,40 +19,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
+import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
+import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     private TextView mTextMessage;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.bottom_information:
-                    mTextMessage.setText(R.string.bottom_Information);
-                    return true;
-                case R.id.bottom_scan:
-                    mTextMessage.setText(R.string.bottom_Scan);
-                    return true;
-                case R.id.bottom_inventory:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-                case R.id.bottom_report:
-                    //mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -59,26 +41,44 @@ public class MainActivity extends AppCompatActivity
 //                        .setAction("Action", null).show();
 //            }
 //        });
+        AddObject();
+        loadHomeFragment();
 
+    }
+
+    //region ÁNH XẠ ĐỐI TƯỢNG
+    public void AddObject() {
+
+        // Thêm đối tượng tool bar
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // Gọi navigation view
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Thêm events cho navagation view
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
+        // Gọi navigation buttom
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setItemIconTintList(null);
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+        layoutParams.setBehavior(new M0_Bottom_Navigation());
+
     }
+    //endregion
 
     //region LOAD FORM
 
-    // load menu phải
+    // load menu phải (menu)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -86,6 +86,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    // Load trang chủ
+    public void loadHomeFragment() {
+        toolbar.setTitle(getString(R.string.bottom_Information));
+        loadFragment(new A4_Information_Fragment());
+    }
+
+    //endregion
+
+    //region SELECT MENNU
+    // Xử lý click menu bên phải (bottom view)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -101,21 +111,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-    //endregion
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-
-
+    // Xử lý click menu bên trái (navigation view)
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -140,4 +136,67 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    // Load menu bên dưới (buttom navigation view)
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.bottom_information:
+                    // Gán tên màn hình
+                    toolbar.setTitle(getString(R.string.bottom_Information));
+
+                    // Gọi màn hình
+                    fragment = new A4_Information_Fragment();
+                    loadFragment(fragment);
+
+                    return true;
+                case R.id.bottom_scan:
+                    // Gán tên màn hình
+                    toolbar.setTitle(getString(R.string.bottom_Inventory));
+
+                    // Gọi màn hình
+                    fragment = new A3_Scan_Fragment();
+                    loadFragment(fragment);
+
+                    return true;
+                case R.id.bottom_inventory:
+                    //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+                case R.id.bottom_report:
+                    //mTextMessage.setText(R.string.title_notifications);
+                    return true;
+            }
+            return false;
+        }
+    };
+    //endregion
+
+    //region XỬ LÝ EVENTS
+
+    // Xử lý sự kiện onBackPressed
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    // Load Fragment
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    //endregion
+
+
 }

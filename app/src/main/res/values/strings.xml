@@ -40,4 +40,10 @@
     <!--MAIN ACTIVITY-->
     <string name="title_activity_main">Màn hình chính</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--A4_INFORMATION-->
+    <string name="a4_error_couldnnot_fetch_json">Không thể đọc file json, vui lòng thử lại</string>
+
 </resources>
