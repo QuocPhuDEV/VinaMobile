@@ -40,10 +40,14 @@
     <!--MAIN ACTIVITY-->
     <string name="title_activity_main">Màn hình chính</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <!--A4_INFORMATION-->
     <string name="a4_error_couldnnot_fetch_json">Không thể đọc file json, vui lòng thử lại</string>
+    <string name="a4_error_couldnnot_no_internet_access">Không có kết nối internet, vui lòng thử lại</string>
+
+    <!--A3_SCAN-->
+    <string name="a3_error_scan_qr_code">Scan QR Code hàng hoá nhập kho</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

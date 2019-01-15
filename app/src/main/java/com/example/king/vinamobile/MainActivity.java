@@ -25,7 +25,6 @@ import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private TextView mTextMessage;
     private Toolbar toolbar;
 
     @Override
@@ -66,7 +65,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
         // Gọi navigation buttom
-        mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setItemIconTintList(null);
@@ -156,7 +154,7 @@ public class MainActivity extends AppCompatActivity
                     return true;
                 case R.id.bottom_scan:
                     // Gán tên màn hình
-                    toolbar.setTitle(getString(R.string.bottom_Inventory));
+                    toolbar.setTitle(getString(R.string.bottom_Scan));
 
                     // Gọi màn hình
                     fragment = new A3_Scan_Fragment();
@@ -164,10 +162,14 @@ public class MainActivity extends AppCompatActivity
 
                     return true;
                 case R.id.bottom_inventory:
-                    //mTextMessage.setText(R.string.title_notifications);
+                    // Gán tên màn hình
+                    toolbar.setTitle(getString(R.string.bottom_Inventory));
+
                     return true;
                 case R.id.bottom_report:
-                    //mTextMessage.setText(R.string.title_notifications);
+                    // Gán tên màn hình
+                    toolbar.setTitle(getString(R.string.bottom_Report));
+
                     return true;
             }
             return false;

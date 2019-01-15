@@ -90,7 +90,6 @@ public class A4_Information_Fragment extends Fragment {
     // Xử lý file Json
     private void fetchInformationItems() {
         try {
-
             JsonArrayRequest request = new JsonArrayRequest(URL,
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -113,13 +112,13 @@ public class A4_Information_Fragment extends Fragment {
                 public void onErrorResponse(VolleyError error) {
                     // lỗi setting json
                     Log.e(TAG, "ERROR: " + error.getMessage());
-                    Toast.makeText(getActivity(), "ERROR: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.a4_error_couldnnot_no_internet_access, Toast.LENGTH_SHORT).show();
                 }
             });
             Json_Volley.getInstance().addToRequestQueue(request);
         }catch (Exception e){
             e.printStackTrace();
-            Toast.makeText(getActivity(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 

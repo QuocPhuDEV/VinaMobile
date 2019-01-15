@@ -65,6 +65,8 @@ public class A1_Login_Activity extends AppCompatActivity {
         CreateDefaultData();
         // Hỏi quyền truy cập của ứng dụng
         askPermission();
+        // Kiểm tra kết nối, xoá dữ liệu cũ
+        deleteData();
         // Đồng bộ dữ liệu
         SyncAccountNow();
     }
@@ -100,9 +102,7 @@ public class A1_Login_Activity extends AppCompatActivity {
     // Gọi phương thức đồng bộ
     public void SyncAccountNow() {
         try {
-            // Xoá dữ liệu trong bảng account
-            Create_Table create_table = new Create_Table(this);
-            create_table.deleteDataAccount();
+
 
             // đồng bộ dữ liệu mới
             new MyJsonTask().execute(URL);
@@ -348,6 +348,23 @@ public class A1_Login_Activity extends AppCompatActivity {
             if (isNetWorkConnected()) {
                 Create_Table create_table = new Create_Table(this);
                 create_table.syncAccount(jsonObject);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Xoá dữ liệu cũ để thực hiện đồng bộ
+    public void deleteData(){
+        try {
+            // Kiểm tra kết nối internet
+            ConnectivityManager cn = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            boolean check =  cn.getActiveNetworkInfo() != null;
+
+            if (check){
+                // Xoá dữ liệu trong bảng account
+                Create_Table create_table = new Create_Table(this);
+                create_table.deleteDataAccount();
             }
         } catch (Exception e) {
             e.printStackTrace();
