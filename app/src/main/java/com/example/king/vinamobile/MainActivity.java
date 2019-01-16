@@ -1,6 +1,10 @@
 package com.example.king.vinamobile;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,17 +23,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.king.vinamobile.A0_Sqlite_Connection.Create_Table;
 import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
+import com.example.king.vinamobile.A1_Login.A1_Login_Activity;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -51,6 +62,10 @@ public class MainActivity extends AppCompatActivity
     private final List<A1_Cls_Account> listAccount = new ArrayList<A1_Cls_Account>();
 
     public TextView nav_header_main_TenKH, nav_header_main_SDT;
+    public CircleImageView nav_header_img;
+
+//    public static final String URL = "https://photos.google.com/u/1/photo/AF1QipNghEH50bmWebzENSuoaxBK8PjMfmp2mSWlzx3K";
+    public static final String URL = "https://www.profiletalent.com.au/wp-content/uploads/2017/05/profile-talent-ant-simpson-feature.jpg";
     //endregion
 
     @Override
@@ -96,6 +111,7 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         nav_header_main_TenKH = (TextView) header.findViewById(R.id.nav_header_main_TenKH);
         nav_header_main_SDT = (TextView) header.findViewById(R.id.nav_header_main_SDT);
+        //nav_header_img = (CircleImageView) header.findViewById(R.id.nav_header_img);
 
         // Gọi navigation buttom
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -166,7 +182,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_account) {
 
         } else if (id == R.id.nav_logout) {
-
+            confirmLogout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -240,21 +256,86 @@ public class MainActivity extends AppCompatActivity
     // Get thông tin user logion
     public void getAllDataUserLogion() {
 
-        // Khởi tạo đối tượng database
-        Create_Table database = new Create_Table(this);
+        try {
 
-        // Lấy thông tin từ user đã login
-        List<A1_Cls_Account> list = database.getDataAccount(mPhoneNumber, mPassWord);
-        this.listAccount.addAll(list);
-        this.TenKH = listAccount.get(0).getTenKH();
-        this.SDT = listAccount.get(0).getSDT();
+            // Khởi tạo đối tượng database
+            Create_Table database = new Create_Table(this);
 
-        // Gán giá trị lên navigation header
-        nav_header_main_TenKH.setText(TenKH);
-        nav_header_main_SDT.setText("Điện thoại: " + SDT);
+            // Lấy thông tin từ user đã login
+            List<A1_Cls_Account> list = database.getDataAccount(mPhoneNumber, mPassWord);
+            this.listAccount.addAll(list);
+            this.TenKH = listAccount.get(0).getTenKH();
+            this.SDT = listAccount.get(0).getSDT();
+
+            // Gán giá trị lên navigation header
+            nav_header_main_TenKH.setText(TenKH);
+            nav_header_main_SDT.setText("Điện thoại: " + SDT);
+
+            // Load image cho avatar
+            //new loadImageFromURL(nav_header_img).execute(URL);
+
+            //nav_header_img.setImageResource(R.drawable.a1_image_changepass_menu);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Xác nhận logout
+    public void confirmLogout() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle(getString(R.string.main_confirm_logout_title_alert));
+        dialog.setMessage(getString(R.string.main_confirm_logout_message_alert));
+
+        DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                switch (i) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        // logout
+                        Intent intent = new Intent(MainActivity.this, A1_Login_Activity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        dialog.setPositiveButton(getString(R.string.main_confirm_logout_button_ok_alert), clickListener);
+        dialog.setNegativeButton(getString(R.string.main_confirm_logout_button_cancel_alert), clickListener);
+        dialog.setIcon(R.drawable.main_user_confirm);
+        dialog.show();
 
     }
-    //endregion
 
+    // Load image avatar
+    private class loadImageFromURL extends AsyncTask<String, Void, Bitmap> {
+        ImageView image;
+
+        public loadImageFromURL(ImageView bmImage) {
+            this.image = bmImage;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String url = urls[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream inputStream = new URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(inputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            image.setImageBitmap(bitmap);
+        }
+    }
+    //endregion
 
 }

@@ -39,6 +39,10 @@
 
     <!--MAIN ACTIVITY-->
     <string name="title_activity_main">Màn hình chính</string>
+    <string name="main_confirm_logout_title_alert"> Xác nhận </string>
+    <string name="main_confirm_logout_message_alert">Bạn có muốn đăng xuất ?</string>
+    <string name="main_confirm_logout_button_ok_alert">Có</string>
+    <string name="main_confirm_logout_button_cancel_alert">Không</string>
 
     <!--A4_INFORMATION-->
     <string name="a4_error_couldnnot_fetch_json">Không thể đọc file json, vui lòng thử lại</string>

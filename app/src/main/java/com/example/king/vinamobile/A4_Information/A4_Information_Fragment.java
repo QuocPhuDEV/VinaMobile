@@ -77,10 +77,10 @@ public class A4_Information_Fragment extends Fragment {
         productsList = new ArrayList<>();
         mAdapter = new A4_Apdater(getContext(), productsList);
 
-        ProgressDialog dialog = new ProgressDialog(getActivity());
-
-        dialog.setMessage("hello");
-        dialog.show();
+//        ProgressDialog dialog = new ProgressDialog(getActivity());
+//
+//        dialog.setMessage("hello");
+//        dialog.show();
 
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(layoutManager);
@@ -90,7 +90,7 @@ public class A4_Information_Fragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
 
         fetchInformationItems();
-        dialog.dismiss();
+        //dialog.dismiss();
 
         return view;
     }
@@ -100,8 +100,7 @@ public class A4_Information_Fragment extends Fragment {
     // Xử lý file Json
     private void fetchInformationItems() {
         try {
-
-
+            
             JsonArrayRequest request = new JsonArrayRequest(URL,
                     new Response.Listener<JSONArray>() {
                         @Override
