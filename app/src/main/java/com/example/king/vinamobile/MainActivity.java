@@ -1,5 +1,6 @@
 package com.example.king.vinamobile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -19,14 +20,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.king.vinamobile.A0_Sqlite_Connection.Create_Table;
+import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    //region KHAI BÁO BIẾN TOÀN CỤC
     private Toolbar toolbar;
+    public static final String PHONE = "PHONE";
+    public static final String PASSWORD = "PASSWORD";
+
+    public String mPhoneNumber;
+    public String mPassWord;
+
+    public String NgayTao;
+    public String NgayCN;
+    public String SDT;
+    public String MatKhau;
+    public String MaKH;
+    public String TenKH;
+    public String DiaChi;
+
+    private final List<A1_Cls_Account> listAccount = new ArrayList<A1_Cls_Account>();
+
+    public TextView nav_header_main_TenKH, nav_header_main_SDT;
+    //endregion
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +68,8 @@ public class MainActivity extends AppCompatActivity
 //        });
         AddObject();
         loadHomeFragment();
+        readDataFormLogin();
+        getAllDataUserLogion();
 
     }
 
@@ -52,6 +79,7 @@ public class MainActivity extends AppCompatActivity
         // Thêm đối tượng tool bar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         // Gọi navigation view
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -64,6 +92,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
+        // Thêm đối tượng navigation header
+        View header = navigationView.getHeaderView(0);
+        nav_header_main_TenKH = (TextView) header.findViewById(R.id.nav_header_main_TenKH);
+        nav_header_main_SDT = (TextView) header.findViewById(R.id.nav_header_main_SDT);
 
         // Gọi navigation buttom
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -91,6 +123,12 @@ public class MainActivity extends AppCompatActivity
         loadFragment(new A4_Information_Fragment());
     }
 
+    // Lấy sđt và password login
+    public void readDataFormLogin() {
+        Intent intent = getIntent();
+        mPhoneNumber = intent.getStringExtra(PHONE);
+        mPassWord = intent.getStringExtra(PASSWORD);
+    }
     //endregion
 
     //region SELECT MENNU
@@ -199,6 +237,23 @@ public class MainActivity extends AppCompatActivity
         transaction.commit();
     }
 
+    // Get thông tin user logion
+    public void getAllDataUserLogion() {
+
+        // Khởi tạo đối tượng database
+        Create_Table database = new Create_Table(this);
+
+        // Lấy thông tin từ user đã login
+        List<A1_Cls_Account> list = database.getDataAccount(mPhoneNumber, mPassWord);
+        this.listAccount.addAll(list);
+        this.TenKH = listAccount.get(0).getTenKH();
+        this.SDT = listAccount.get(0).getSDT();
+
+        // Gán giá trị lên navigation header
+        nav_header_main_TenKH.setText(TenKH);
+        nav_header_main_SDT.setText("Điện thoại: " + SDT);
+
+    }
     //endregion
 
 

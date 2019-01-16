@@ -13,6 +13,9 @@ import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
 
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Create_Table extends SQLiteOpenHelper {
     //region KHAI BÁO BIẾN TOÀN CỤC
 
@@ -96,6 +99,9 @@ public class Create_Table extends SQLiteOpenHelper {
     }
 
     //endregion
+
+
+    // XỬ LÝ RIÊNG ACCOUNT
 
     //region THÊM DỮ LIỆU MẶC ĐỊNH CHO CÁC BẢNG
 
@@ -182,7 +188,7 @@ public class Create_Table extends SQLiteOpenHelper {
             cursor.close();
 
             // return count
-            if (count > 0){
+            if (count > 0) {
                 result = true;
             }
             return result;
@@ -202,9 +208,6 @@ public class Create_Table extends SQLiteOpenHelper {
     // Đồng bộ dữ liệu từ Json về SQLite database
     public void syncAccount(JSONObject jsonObject) {
         try {
-            // Xoá dữ liệu cũ trước khi sync
-            //deleteDataAccount();
-
             // bắt đầu thực hiện sync
             ContentValues values = new ContentValues();
             SQLiteDatabase database = this.getWritableDatabase();
@@ -225,6 +228,42 @@ public class Create_Table extends SQLiteOpenHelper {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    // Search dữ liệu
+    public List<A1_Cls_Account> getDataAccount(String sdt, String pass) {
+        try {
+            List<A1_Cls_Account> accountList = new ArrayList<A1_Cls_Account>();
+
+            // Script search
+            String script = "SELECT * FROM " + TABLE_NAME_ACCOUNT +
+                    " WHERE SDT = '" + sdt + "' and MatKhau = '" + pass + "' ";
+
+            // Khởi tạo đối tượng database
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.rawQuery(script, null);
+
+            // Duyệt danh sách search được
+            if (cursor.moveToFirst()) {
+                do {
+                    A1_Cls_Account account = new A1_Cls_Account();
+                    account.setNgaytao(cursor.getString(0));
+                    account.setNgayCN(cursor.getString(1));
+                    account.setSDT(cursor.getString(2));
+                    account.setMatKhau(cursor.getString(3));
+                    account.setMaKH(cursor.getString(4));
+                    account.setTenKH(cursor.getString(5));
+                    account.setDiaChi(cursor.getString(6));
+
+                    // thêm dữ liệu vào list
+                    accountList.add(account);
+                } while (cursor.moveToNext());
+            }
+            return accountList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 

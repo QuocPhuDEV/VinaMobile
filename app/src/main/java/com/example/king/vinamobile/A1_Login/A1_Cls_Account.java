@@ -52,6 +52,34 @@ public class A1_Cls_Account implements Serializable {
         return DiaChi;
     }
 
+    public void setNgaytao(String ngaytao) {
+        Ngaytao = ngaytao;
+    }
+
+    public void setNgayCN(String ngayCN) {
+        NgayCN = ngayCN;
+    }
+
+    public void setSDT(String SDT) {
+        this.SDT = SDT;
+    }
+
+    public void setMatKhau(String matKhau) {
+        MatKhau = matKhau;
+    }
+
+    public void setMaKH(String maKH) {
+        MaKH = maKH;
+    }
+
+    public void setTenKH(String tenKH) {
+        TenKH = tenKH;
+    }
+
+    public void setDiaChi(String diaChi) {
+        DiaChi = diaChi;
+    }
+
     @Override
     public String toString() {
         return "A1_Cls_Account{" +

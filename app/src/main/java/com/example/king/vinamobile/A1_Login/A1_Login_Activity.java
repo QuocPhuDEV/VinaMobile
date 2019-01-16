@@ -46,9 +46,12 @@ public class A1_Login_Activity extends AppCompatActivity {
     private CheckBox chkShowPass;
 
     public static final int REQUEST_ID_PHONE_NUMBER = 100;
+    public static final String PHONE = "PHONE";
+    public static final String PASSWORD = "PASSWORD";
 
     //public static final String URL = "https://next.json-generator.com/api/json/get/Vk0DSK0-U";
-    public static final String URL = "http://www.json-generator.com/api/json/get/cenQYrriTC?indent=2";
+    //public static final String URL = "http://www.json-generator.com/api/json/get/cenQYrriTC?indent=2";
+    public static final String URL = "https://api.myjson.com/bins/9t0ok";
 
 
     //endregion
@@ -149,6 +152,8 @@ public class A1_Login_Activity extends AppCompatActivity {
 
                 if (result) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra(PHONE,sdt);
+                    intent.putExtra(PASSWORD,pass);
                     startActivity(intent);
                     //Toast.makeText(this, "go", Toast.LENGTH_SHORT).show();
                 } else {
@@ -355,13 +360,13 @@ public class A1_Login_Activity extends AppCompatActivity {
     }
 
     // Xoá dữ liệu cũ để thực hiện đồng bộ
-    public void deleteData(){
+    public void deleteData() {
         try {
             // Kiểm tra kết nối internet
             ConnectivityManager cn = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            boolean check =  cn.getActiveNetworkInfo() != null;
+            boolean check = cn.getActiveNetworkInfo() != null;
 
-            if (check){
+            if (check) {
                 // Xoá dữ liệu trong bảng account
                 Create_Table create_table = new Create_Table(this);
                 create_table.deleteDataAccount();

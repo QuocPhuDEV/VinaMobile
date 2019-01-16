@@ -1,6 +1,7 @@
 package com.example.king.vinamobile.A4_Information;
 
 
+import android.app.ProgressDialog;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -44,6 +46,8 @@ public class A4_Information_Fragment extends Fragment {
     private RecyclerView recyclerView;
     private List<A4_Cls_Products> productsList;
     private A4_Apdater mAdapter;
+
+
     //endregion
 
     public A4_Information_Fragment() {
@@ -73,6 +77,11 @@ public class A4_Information_Fragment extends Fragment {
         productsList = new ArrayList<>();
         mAdapter = new A4_Apdater(getContext(), productsList);
 
+        ProgressDialog dialog = new ProgressDialog(getActivity());
+
+        dialog.setMessage("hello");
+        dialog.show();
+
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
@@ -81,6 +90,7 @@ public class A4_Information_Fragment extends Fragment {
         recyclerView.setNestedScrollingEnabled(false);
 
         fetchInformationItems();
+        dialog.dismiss();
 
         return view;
     }
@@ -90,6 +100,8 @@ public class A4_Information_Fragment extends Fragment {
     // Xử lý file Json
     private void fetchInformationItems() {
         try {
+
+
             JsonArrayRequest request = new JsonArrayRequest(URL,
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -116,6 +128,7 @@ public class A4_Information_Fragment extends Fragment {
                 }
             });
             Json_Volley.getInstance().addToRequestQueue(request);
+
         } catch (Exception e) {
             e.printStackTrace();
             Toast.makeText(getActivity(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
