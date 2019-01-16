@@ -116,9 +116,9 @@ public class A4_Information_Fragment extends Fragment {
                 }
             });
             Json_Volley.getInstance().addToRequestQueue(request);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
