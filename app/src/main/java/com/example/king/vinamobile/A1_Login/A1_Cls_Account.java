@@ -10,11 +10,12 @@ public class A1_Cls_Account implements Serializable {
     private String MaKH;
     private String TenKH;
     private String DiaChi;
+    private String HinhAnh;
 
     public A1_Cls_Account() {
     }
 
-    public A1_Cls_Account(String ngaytao, String ngayCN, String SDT, String matKhau, String maKH, String tenKH, String diaChi) {
+    public A1_Cls_Account(String ngaytao, String ngayCN, String SDT, String matKhau, String maKH, String tenKH, String diaChi,String hinhAnh) {
         Ngaytao = ngaytao;
         NgayCN = ngayCN;
         this.SDT = SDT;
@@ -22,6 +23,7 @@ public class A1_Cls_Account implements Serializable {
         MaKH = maKH;
         TenKH = tenKH;
         DiaChi = diaChi;
+        HinhAnh = hinhAnh;
     }
 
     public String getNgaytao() {
@@ -78,6 +80,14 @@ public class A1_Cls_Account implements Serializable {
 
     public void setDiaChi(String diaChi) {
         DiaChi = diaChi;
+    }
+
+    public String getHinhAnh() {
+        return HinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        HinhAnh = hinhAnh;
     }
 
     @Override

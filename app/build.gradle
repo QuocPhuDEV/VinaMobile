@@ -40,5 +40,5 @@ dependencies {
     implementation 'info.androidhive:barcode-reader:1.1.5'
     implementation 'com.google.android.gms:play-services-vision:17.0.2'
 
-    implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 }

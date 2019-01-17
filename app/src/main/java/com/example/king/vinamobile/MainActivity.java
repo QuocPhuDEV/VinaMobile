@@ -58,14 +58,13 @@ public class MainActivity extends AppCompatActivity
     public String MaKH;
     public String TenKH;
     public String DiaChi;
+    public String Img;
 
     private final List<A1_Cls_Account> listAccount = new ArrayList<A1_Cls_Account>();
 
     public TextView nav_header_main_TenKH, nav_header_main_SDT;
     public CircleImageView nav_header_img;
 
-//    public static final String URL = "https://photos.google.com/u/1/photo/AF1QipNghEH50bmWebzENSuoaxBK8PjMfmp2mSWlzx3K";
-    public static final String URL = "https://www.profiletalent.com.au/wp-content/uploads/2017/05/profile-talent-ant-simpson-feature.jpg";
     //endregion
 
     @Override
@@ -111,7 +110,7 @@ public class MainActivity extends AppCompatActivity
         View header = navigationView.getHeaderView(0);
         nav_header_main_TenKH = (TextView) header.findViewById(R.id.nav_header_main_TenKH);
         nav_header_main_SDT = (TextView) header.findViewById(R.id.nav_header_main_SDT);
-        //nav_header_img = (CircleImageView) header.findViewById(R.id.nav_header_img);
+        nav_header_img = (CircleImageView) header.findViewById(R.id.nav_header_img);
 
         // Gọi navigation buttom
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -255,9 +254,7 @@ public class MainActivity extends AppCompatActivity
 
     // Get thông tin user logion
     public void getAllDataUserLogion() {
-
         try {
-
             // Khởi tạo đối tượng database
             Create_Table database = new Create_Table(this);
 
@@ -266,15 +263,14 @@ public class MainActivity extends AppCompatActivity
             this.listAccount.addAll(list);
             this.TenKH = listAccount.get(0).getTenKH();
             this.SDT = listAccount.get(0).getSDT();
+            this.Img = listAccount.get(0).getHinhAnh();
 
             // Gán giá trị lên navigation header
             nav_header_main_TenKH.setText(TenKH);
             nav_header_main_SDT.setText("Điện thoại: " + SDT);
 
             // Load image cho avatar
-            //new loadImageFromURL(nav_header_img).execute(URL);
-
-            //nav_header_img.setImageResource(R.drawable.a1_image_changepass_menu);
+            new loadImageFromURL(nav_header_img).execute(Img);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -333,7 +329,11 @@ public class MainActivity extends AppCompatActivity
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            image.setImageBitmap(bitmap);
+            try {
+                image.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
     //endregion

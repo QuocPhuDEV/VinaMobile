@@ -39,6 +39,7 @@ public class Create_Table extends SQLiteOpenHelper {
     private static final String TBT_ACCOUNT_MAKH = "MaKH";
     private static final String TBT_ACCOUNT_TENKH = "TenKH";
     private static final String TBT_ACCOUNT_DIACHI = "DiaChi";
+    private static final String TBT_ACCOUNT_HINHANH = "HinhAnh";
 
     //endregion
 
@@ -69,7 +70,8 @@ public class Create_Table extends SQLiteOpenHelper {
                     + TBT_ACCOUNT_PASSWORD + " VARCHAR(20), "
                     + TBT_ACCOUNT_MAKH + " VARCHAR(20), "
                     + TBT_ACCOUNT_TENKH + " VARCHAR(50), "
-                    + TBT_ACCOUNT_DIACHI + " VARCHAR(100) " + ")";
+                    + TBT_ACCOUNT_DIACHI + " VARCHAR(100), "
+                    + TBT_ACCOUNT_HINHANH + " VARCHAR(100) " + ")";
 
             // chạy lệnh tạo bảng
             sqLiteDatabase.execSQL(script);
@@ -118,6 +120,7 @@ public class Create_Table extends SQLiteOpenHelper {
             values.put(TBT_ACCOUNT_MAKH, account.getMaKH());
             values.put(TBT_ACCOUNT_TENKH, account.getTenKH());
             values.put(TBT_ACCOUNT_DIACHI, account.getDiaChi());
+            values.put(TBT_ACCOUNT_HINHANH, account.getHinhAnh());
 
             // thêm 1 dòng dữ liệu vào bảng
             database.insert(TABLE_NAME_ACCOUNT, null, values);
@@ -138,8 +141,8 @@ public class Create_Table extends SQLiteOpenHelper {
             int count = this.GetAccountCount();
             if (count == 0) {
                 // tạo dữ liệu mẫu
-                A1_Cls_Account account = new A1_Cls_Account("05/01/2019", null, "15555218135", "123", "KH01", "Hoàng Quốc Phú", "VN");
-                A1_Cls_Account account2 = new A1_Cls_Account("07/01/2019", null, "0941628268", "123", "KH02", "Nguyễn Mộng Nga", "Quận 9 - TP.HCM");
+                A1_Cls_Account account = new A1_Cls_Account("05/01/2019", null, "15555218135", "123", "KH01", "Hoàng Quốc Phú", "VN", "http");
+                A1_Cls_Account account2 = new A1_Cls_Account("07/01/2019", null, "0941628268", "321", "KH02", "Nguyễn Mộng Nga", "Quận 9 - TP.HCM", "http://vinamobile.somee.com/aNga.jpg");
 
                 // thêm dữ liệu mẫu vào bảng account
                 this.AddNewAccount(account, context);
@@ -219,6 +222,7 @@ public class Create_Table extends SQLiteOpenHelper {
             values.put(TBT_ACCOUNT_MAKH, jsonObject.getString("MaKH"));
             values.put(TBT_ACCOUNT_TENKH, jsonObject.getString("TenKH"));
             values.put(TBT_ACCOUNT_DIACHI, jsonObject.getString("DiaChi"));
+            values.put(TBT_ACCOUNT_HINHANH, jsonObject.getString("Img"));
 
             // Thêm dữ liệu lấy được từ Json vào bảng Account
             database.insert(TABLE_NAME_ACCOUNT, null, values);
@@ -255,6 +259,7 @@ public class Create_Table extends SQLiteOpenHelper {
                     account.setMaKH(cursor.getString(4));
                     account.setTenKH(cursor.getString(5));
                     account.setDiaChi(cursor.getString(6));
+                    account.setHinhAnh(cursor.getString(7));
 
                     // thêm dữ liệu vào list
                     accountList.add(account);

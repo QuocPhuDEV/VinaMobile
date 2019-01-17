@@ -51,7 +51,8 @@ public class A1_Login_Activity extends AppCompatActivity {
 
     //public static final String URL = "https://next.json-generator.com/api/json/get/Vk0DSK0-U";
     //public static final String URL = "http://www.json-generator.com/api/json/get/cenQYrriTC?indent=2";
-    public static final String URL = "https://api.myjson.com/bins/9t0ok";
+    //public static final String URL = "https://api.myjson.com/bins/9t0ok";
+    public static final String URL = "https://api.myjson.com/bins/d34zw";
 
 
     //endregion
@@ -105,8 +106,6 @@ public class A1_Login_Activity extends AppCompatActivity {
     // Gọi phương thức đồng bộ
     public void SyncAccountNow() {
         try {
-
-
             // đồng bộ dữ liệu mới
             new MyJsonTask().execute(URL);
         } catch (Exception e) {
@@ -152,8 +151,8 @@ public class A1_Login_Activity extends AppCompatActivity {
 
                 if (result) {
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra(PHONE,sdt);
-                    intent.putExtra(PASSWORD,pass);
+                    intent.putExtra(PHONE, sdt);
+                    intent.putExtra(PASSWORD, pass);
                     startActivity(intent);
                     finish();
                     //Toast.makeText(this, "go", Toast.LENGTH_SHORT).show();

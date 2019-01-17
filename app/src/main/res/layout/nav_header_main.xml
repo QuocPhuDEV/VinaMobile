@@ -14,38 +14,44 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <!--<ImageView-->
-        <!--android:id="@+id/nav_header_img"-->
-        <!--android:layout_width="80dp"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_marginStart="10dp"-->
-        <!--android:layout_marginTop="13dp"-->
-        <!--android:contentDescription="@string/nav_header_desc"-->
-        <!--android:paddingTop="@dimen/nav_header_vertical_spacing"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent"-->
-        <!--android:background="@drawable/a1_login_radius_image"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:src="@drawable/anga" />-->
+    <!--android:id="@+id/nav_header_img"-->
+    <!--android:layout_width="80dp"-->
+    <!--android:layout_height="80dp"-->
+    <!--android:layout_marginStart="10dp"-->
+    <!--android:layout_marginTop="13dp"-->
+    <!--android:contentDescription="@string/nav_header_desc"-->
+    <!--android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--android:background="@drawable/a1_login_radius_image"-->
+    <!--android:scaleType="fitXY"-->
+    <!--android:src="@drawable/anga" />-->
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/nav_header_img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/anga"/>
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        app:civ_border_color="@color/blue"
+        app:civ_border_width="2dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
         android:id="@+id/nav_header_main_TenKH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginBottom="3dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="@string/nav_TenKH"
-        android:textSize="15dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/nav_header_main_SDT"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nav_header_img" />
@@ -54,7 +60,7 @@
         android:id="@+id/nav_header_main_SDT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="3dp"
         android:text="@string/nav_SDT"
         android:textSize="12dp"

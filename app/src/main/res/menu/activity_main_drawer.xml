@@ -7,32 +7,32 @@
     <item
         android:id="@+id/nav_input"
         android:icon="@drawable/nav_menu_input_warehouse"
-        android:title="Nhập kho" />
+        android:title="@string/nav_input" />
     <item
         android:id="@+id/nav_scan"
         android:icon="@drawable/nav_menu_scan"
-        android:title="Sản phầm đã Scan" />
+        android:title="@string/nav_scanned" />
     <item
         android:id="@+id/nav_inventory"
         android:icon="@drawable/nav_menu_inventory"
-        android:title="Tồn kho" />
+        android:title="@string/nav_inventory" />
     <item
         android:id="@+id/nav_report"
         android:icon="@drawable/nav_menu_report"
-        android:title="Thống kê / Báo cáo" />
+        android:title="@string/nav_report" />
 
     <!--</group>-->
 
-    <item android:title="Thông tin cá nhân">
+    <item android:title="@string/nav_account_info_title">
         <menu>
             <item
                 android:id="@+id/nav_account"
                 android:icon="@drawable/nav_menu_account"
-                android:title="Tài khoản" />
+                android:title="@string/nav_account" />
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/nav_menu_logout"
-                android:title="Đăng xuất" />
+                android:title="@string/nav_logout" />
         </menu>
     </item>
 
