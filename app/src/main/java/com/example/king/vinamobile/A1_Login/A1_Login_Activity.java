@@ -49,11 +49,7 @@ public class A1_Login_Activity extends AppCompatActivity {
     public static final String PHONE = "PHONE";
     public static final String PASSWORD = "PASSWORD";
 
-    //public static final String URL = "https://next.json-generator.com/api/json/get/Vk0DSK0-U";
-    //public static final String URL = "http://www.json-generator.com/api/json/get/cenQYrriTC?indent=2";
-    //public static final String URL = "https://api.myjson.com/bins/9t0ok";
-    public static final String URL = "https://api.myjson.com/bins/d34zw";
-
+    public static final String URL = "https://api.myjson.com/bins/192bwc";
 
     //endregion
 
@@ -67,12 +63,10 @@ public class A1_Login_Activity extends AppCompatActivity {
         addEvents();
         // Tạo dữ liệu mặc định
         CreateDefaultData();
-        // Hỏi quyền truy cập của ứng dụng
-        askPermission();
-        // Kiểm tra kết nối, xoá dữ liệu cũ
+        // Hỏi quyền truy cập sđt của ứng dụng
+        //askPermission();
+        // Kiểm tra kết nối, xoá dữ liệu cũ, đồng bộ dữ liệu mới
         deleteData();
-        // Đồng bộ dữ liệu
-        SyncAccountNow();
     }
 
     @Override
@@ -231,16 +225,14 @@ public class A1_Login_Activity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void askPermission() {
         try {
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) == PackageManager.PERMISSION_GRANTED
-                    && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
 
                 // Nếu đã được cấp quyền truy cập, lấy sdt, gán lên editText
                 getPhoneNumber();
             } else {
                 // Nếu chưa được gán quyền truy cập sdt.
                 // Hỏi quyền truy cập
-                String[] permissions = new String[]{Manifest.permission.READ_PHONE_NUMBERS, Manifest.permission.READ_PHONE_STATE};
+                String[] permissions = new String[]{Manifest.permission.READ_PHONE_STATE};
 
                 // Hiển thị dialog để xác nhận
                 ActivityCompat.requestPermissions(this, permissions, REQUEST_ID_PHONE_NUMBER);
@@ -262,9 +254,8 @@ public class A1_Login_Activity extends AppCompatActivity {
             if (requestCode == REQUEST_ID_PHONE_NUMBER) {
 
                 // Nếu người dùng đã xác nhận cấp quyền
-                if (grantResults.length > 1
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
                     // Nếu đã được cấp quyền truy cập, lấy sdt, gán lên editText
                     getPhoneNumber();
@@ -370,6 +361,9 @@ public class A1_Login_Activity extends AppCompatActivity {
                 // Xoá dữ liệu trong bảng account
                 Create_Table create_table = new Create_Table(this);
                 create_table.deleteDataAccount();
+
+                // Đồng bộ dữ liệu
+                SyncAccountNow();
             }
         } catch (Exception e) {
             e.printStackTrace();

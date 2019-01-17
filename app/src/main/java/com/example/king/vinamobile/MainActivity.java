@@ -1,9 +1,11 @@
 package com.example.king.vinamobile;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,6 +16,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,6 +35,7 @@ import com.example.king.vinamobile.A1_Login.A1_Login_Activity;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
+import com.example.king.vinamobile.A7_Profile.A7_Profile_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
 import java.io.InputStream;
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         AddObject();
         loadHomeFragment();
         readDataFormLogin();
-        getAllDataUserLogion();
+        getAllDataUserLogin();
 
     }
 
@@ -167,6 +171,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        Fragment fragment;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -179,7 +184,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_report) {
 
         } else if (id == R.id.nav_account) {
-
+            fragment = new A7_Profile_Fragment();
+            loadFragment(fragment);
+            Bundle bundle = new Bundle();
+            bundle.putString(PHONE, mPhoneNumber);
+            bundle.putString(PASSWORD, mPassWord);
+            fragment.setArguments(bundle);
         } else if (id == R.id.nav_logout) {
             confirmLogout();
         }
@@ -253,7 +263,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     // Get thông tin user logion
-    public void getAllDataUserLogion() {
+    public void getAllDataUserLogin() {
         try {
             // Khởi tạo đối tượng database
             Create_Table database = new Create_Table(this);
@@ -270,7 +280,17 @@ public class MainActivity extends AppCompatActivity
             nav_header_main_SDT.setText("Điện thoại: " + SDT);
 
             // Load image cho avatar
-            new loadImageFromURL(nav_header_img).execute(Img);
+            // Kiểm tra nết nối internet
+            if (isNetWorkConnected()) {
+                if (TextUtils.isEmpty(this.Img)) {
+                    nav_header_img.setImageResource(R.drawable.a1_image_login);
+                } else {
+                    new loadImageFromURL(nav_header_img).execute(Img);
+                }
+            } else {
+                nav_header_img.setImageResource(R.drawable.a1_image_login);
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -304,6 +324,18 @@ public class MainActivity extends AppCompatActivity
         dialog.setIcon(R.drawable.main_user_confirm);
         dialog.show();
 
+    }
+
+    // Kiểm tra kết nối internet
+    private boolean isNetWorkConnected() {
+        try {
+            // Kiểm tra kết nối, trả về true nếu có kết nối internet
+            ConnectivityManager cn = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+            return cn.getActiveNetworkInfo() != null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // Load image avatar

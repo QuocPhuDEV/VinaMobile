@@ -126,7 +126,7 @@ public class Create_Table extends SQLiteOpenHelper {
             database.insert(TABLE_NAME_ACCOUNT, null, values);
 
             // Thông báo
-            Toast.makeText(context, "Thêm account thành công", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, "Thêm account thành công", Toast.LENGTH_SHORT).show();
 
             // đóng kết nối
             database.close();
@@ -141,7 +141,7 @@ public class Create_Table extends SQLiteOpenHelper {
             int count = this.GetAccountCount();
             if (count == 0) {
                 // tạo dữ liệu mẫu
-                A1_Cls_Account account = new A1_Cls_Account("05/01/2019", null, "15555218135", "123", "KH01", "Hoàng Quốc Phú", "VN", "http");
+                A1_Cls_Account account = new A1_Cls_Account("05/01/2019", null, "15555218135", "123", "KH01", "Hoàng Quốc Phú", "VN", "http://vinamobile.somee.com/phudeptrai.jpg");
                 A1_Cls_Account account2 = new A1_Cls_Account("07/01/2019", null, "0941628268", "321", "KH02", "Nguyễn Mộng Nga", "Quận 9 - TP.HCM", "http://vinamobile.somee.com/aNga.jpg");
 
                 // thêm dữ liệu mẫu vào bảng account
