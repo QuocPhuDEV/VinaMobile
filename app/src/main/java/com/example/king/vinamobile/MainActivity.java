@@ -1,10 +1,14 @@
 package com.example.king.vinamobile;
 
+import android.app.ActionBar;
+import android.app.Application;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -91,6 +95,12 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        this.toolbar.setBackgroundColor(Color.BLUE);
+//    }
+
     //region ÁNH XẠ ĐỐI TƯỢNG
     public void AddObject() {
 
@@ -128,13 +138,13 @@ public class MainActivity extends AppCompatActivity
 
     //region LOAD FORM
 
-    // load menu phải (menu)
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+//    // load menu phải (menu)
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main, menu);
+//        return true;
+//    }
 
     // Load trang chủ
     public void loadHomeFragment() {
@@ -151,21 +161,21 @@ public class MainActivity extends AppCompatActivity
     //endregion
 
     //region SELECT MENNU
-    // Xử lý click menu bên phải (bottom view)
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    // Xử lý click menu bên phải (bottom view)
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     // Xử lý click menu bên trái (navigation view)
     @SuppressWarnings("StatementWithEmptyBody")

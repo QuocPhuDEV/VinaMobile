@@ -36,7 +36,8 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/a1_login_radius_image"
-                android:src="@drawable/a2_image_changepass" />
+                android:src="@drawable/a1_image_changepass_menu"
+                android:scaleType="fitXY"/>
             
         </LinearLayout>
 

@@ -146,5 +146,6 @@ public class A2_ChangePass_Activity extends AppCompatActivity {
     public void btnCancel(View view) {
         this.onBackPressed();
     }
+
     //endregion
 }

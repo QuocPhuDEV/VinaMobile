@@ -63,7 +63,7 @@
                     android:background="@android:color/white"
                     android:enabled="false"
                     android:hint="@string/a1_edUser"
-                    android:text="0932141525"
+                    android:text="0348753257"
                     android:paddingLeft="10dp"
                     android:textColor="#0033FF"
                     android:textColorHint="@color/dodger_blue" />

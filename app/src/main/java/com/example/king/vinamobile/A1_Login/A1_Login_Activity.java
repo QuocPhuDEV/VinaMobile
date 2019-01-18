@@ -49,7 +49,7 @@ public class A1_Login_Activity extends AppCompatActivity {
     public static final String PHONE = "PHONE";
     public static final String PASSWORD = "PASSWORD";
 
-    public static final String URL = "https://api.myjson.com/bins/192bwc";
+    public static final String URL = "https://api.myjson.com/bins/zblfk";
 
     //endregion
 
@@ -107,25 +107,25 @@ public class A1_Login_Activity extends AppCompatActivity {
         }
     }
 
-    // Load menu change password
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.a2_changepass_menu, menu);
-        return true;
-    }
-
-    // Mở màn hình change password
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.a2_item_change_pass) {
-            Intent intent = new Intent(this, A2_ChangePass_Activity.class);
-            intent.putExtra("phoneNumber", edUser.getText().toString());
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    // Load menu change password
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater menuInflater = getMenuInflater();
+//        menuInflater.inflate(R.menu.a2_changepass_menu, menu);
+//        return true;
+//    }
+//
+//    // Mở màn hình change password
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.a2_item_change_pass) {
+//            Intent intent = new Intent(this, A2_ChangePass_Activity.class);
+//            intent.putExtra("phoneNumber", edUser.getText().toString());
+//            startActivity(intent);
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     //endregion
 
@@ -274,6 +274,7 @@ public class A1_Login_Activity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            dialog.setTitle(getString(R.string.a7_progress_title));
             dialog.setMessage(getString(R.string.a1_progress_sync));
             dialog.show();
         }

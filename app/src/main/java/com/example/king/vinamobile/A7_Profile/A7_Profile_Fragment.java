@@ -1,28 +1,37 @@
 package com.example.king.vinamobile.A7_Profile;
 
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.king.vinamobile.A0_Sqlite_Connection.Create_Table;
 import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
+import com.example.king.vinamobile.A2_Change_Password.A2_ChangePass_Activity;
 import com.example.king.vinamobile.MainActivity;
 import com.example.king.vinamobile.R;
 
@@ -48,6 +57,7 @@ public class A7_Profile_Fragment extends Fragment {
     private TextView tvHoTen, tvDiaChi, tvSDT;
     private CircleImageView imgAvt;
 
+
     public String NgayTao;
     public String NgayCN;
     public String SDT;
@@ -68,6 +78,7 @@ public class A7_Profile_Fragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         // Lấy dữ liệu từ form main
         Bundle bundle = this.getArguments();
@@ -83,26 +94,51 @@ public class A7_Profile_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_a7__profile_, container, false);
+
+        // Set tiêu để form action bar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.a7_form_title));
+        // Set màu sắc action bar
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+
+        // ẩn thanh action bar
+        //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+        // ánh xạ đối tượng
         tvHoTen = (TextView) view.findViewById(R.id.a7_profile_tv_full_name);
         tvDiaChi = (TextView) view.findViewById(R.id.a7_profile_tv_address);
         tvSDT = (TextView) view.findViewById(R.id.a7_profile_tv_phone_number);
         imgAvt = (CircleImageView) view.findViewById(R.id.a7_profile_img_avt);
 
-        //getActivity().getActionBar().hide();
-
-
+        // Gọi function load data
         getAllDataUserLogin();
 
         return view;
     }
 
-    //region ÁNH XẠ ĐỐI TƯỢNG
-    public void AddObject() {
+    //region LOAD FORM
+    // Load menu change password
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.a2_changepass_menu, menu);
+    }
 
+    // Mở màn hình change password
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.a2_item_change_pass) {
+            Intent intent = new Intent(getActivity(), A2_ChangePass_Activity.class);
+            intent.putExtra("phoneNumber", tvSDT.getText().toString());
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
     //endregion
 
     //region XỬ LÝ EVENTS
+
 
     // Get thông tin user logion
     public void getAllDataUserLogin() {
@@ -157,6 +193,14 @@ public class A7_Profile_Fragment extends Fragment {
     // Load image avatar
     private class loadImageFromURL extends AsyncTask<String, Void, Bitmap> {
         ImageView image;
+        public ProgressDialog dialog = new ProgressDialog(getActivity());
+
+        @Override
+        protected void onPreExecute() {
+            dialog.setTitle(getString(R.string.a7_progress_title));
+            dialog.setMessage(getString(R.string.a7_progress_message));
+            dialog.show();
+        }
 
         public loadImageFromURL(ImageView bmImage) {
             this.image = bmImage;
@@ -179,6 +223,7 @@ public class A7_Profile_Fragment extends Fragment {
         protected void onPostExecute(Bitmap bitmap) {
             try {
                 image.setImageBitmap(bitmap);
+                dialog.dismiss();
             } catch (Exception e) {
                 e.printStackTrace();
             }
