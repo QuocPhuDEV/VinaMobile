@@ -55,6 +55,7 @@ public class A7_Profile_Fragment extends Fragment {
     public static final String PASSWORD = "PASSWORD";
 
     private TextView tvHoTen, tvDiaChi, tvSDT;
+    private TextView tvNgayTao, tvNgayCN, tvMaKH, tvhoten, tvsdt, tvdiachi;
     private CircleImageView imgAvt;
 
 
@@ -92,27 +93,37 @@ public class A7_Profile_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_a7__profile_, container, false);
+        try {
+            View view = inflater.inflate(R.layout.fragment_a7__profile_, container, false);
 
-        // Set tiêu để form action bar
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.a7_form_title));
-        // Set màu sắc action bar
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+            // Set tiêu để form action bar
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.a7_form_title));
+            // Set màu sắc action bar
+            ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
-        // ẩn thanh action bar
-        //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+            // ẩn thanh action bar
+            //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
-        // ánh xạ đối tượng
-        tvHoTen = (TextView) view.findViewById(R.id.a7_profile_tv_full_name);
-        tvDiaChi = (TextView) view.findViewById(R.id.a7_profile_tv_address);
-        tvSDT = (TextView) view.findViewById(R.id.a7_profile_tv_phone_number);
-        imgAvt = (CircleImageView) view.findViewById(R.id.a7_profile_img_avt);
+            // ánh xạ đối tượng
+            tvHoTen = (TextView) view.findViewById(R.id.a7_profile_tv_full_name);
+            tvDiaChi = (TextView) view.findViewById(R.id.a7_profile_tv_address);
+            tvSDT = (TextView) view.findViewById(R.id.a7_profile_tv_phone_number);
+            imgAvt = (CircleImageView) view.findViewById(R.id.a7_profile_img_avt);
+            tvNgayTao = (TextView) view.findViewById(R.id.a7_tv_ngay_tao);
+            tvNgayCN = (TextView) view.findViewById(R.id.a7_tv_ngay_cn);
+            tvMaKH = (TextView) view.findViewById(R.id.a7_tv_ma_kh);
+            tvhoten = (TextView) view.findViewById(R.id.a7_tv_ten_kh);
+            tvsdt = (TextView) view.findViewById(R.id.a7_tv_sdt);
+            tvdiachi = (TextView) view.findViewById(R.id.a7_tv_diachi);
 
-        // Gọi function load data
-        getAllDataUserLogin();
+            // Gọi function load data
+            getAllDataUserLogin();
 
-        return view;
+            return view;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //region LOAD FORM
@@ -139,7 +150,6 @@ public class A7_Profile_Fragment extends Fragment {
 
     //region XỬ LÝ EVENTS
 
-
     // Get thông tin user logion
     public void getAllDataUserLogin() {
         try {
@@ -153,11 +163,21 @@ public class A7_Profile_Fragment extends Fragment {
             this.SDT = listAccount.get(0).getSDT();
             this.DiaChi = listAccount.get(0).getDiaChi();
             this.Img = listAccount.get(0).getHinhAnh();
+            this.MaKH = listAccount.get(0).getMaKH();
+            this.NgayCN = listAccount.get(0).getNgayCN();
+            this.NgayTao = listAccount.get(0).getNgaytao();
 
             // Gán giá trị lên form
             tvHoTen.setText(this.TenKH);
             tvSDT.setText(this.SDT);
             tvDiaChi.setText(this.DiaChi);
+
+            tvMaKH.setText(this.MaKH);
+            tvNgayTao.setText(this.NgayTao);
+            tvNgayCN.setText(this.NgayCN);
+            tvdiachi.setText(this.DiaChi);
+            tvsdt.setText(this.SDT);
+            tvhoten.setText(this.TenKH);
 
 
             // Load image cho avatar

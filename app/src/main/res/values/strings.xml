@@ -54,6 +54,7 @@
     <string name="main_confirm_logout_button_cancel_alert">Không</string>
 
     <!--A4_INFORMATION-->
+    <string name="a4_new_products">Sản phẩm mới</string>
     <string name="a4_error_couldnnot_fetch_json">Không thể đọc file json, vui lòng thử lại</string>
     <string name="a4_error_couldnnot_no_internet_access">Không có kết nối internet, vui lòng thử lại</string>
 
@@ -64,5 +65,12 @@
     <string name="a7_form_title">Thông tin tài khoản</string>
     <string name="a7_progress_title">Thông báo</string>
     <string name="a7_progress_message">Đang tải dữ liệu, vui lòng chờ</string>
+
+    <string name="a7_title_ngay_tao">Ngày tạo</string>
+    <string name="a7_title_ngay_cn">Ngày cập nhật</string>
+    <string name="a7_title_makh">Mã khách hàng</string>
+    <string name="a7_title_tenkh">Tên khách hàng</string>
+    <string name="a7_title_sdt">Số điện thoại</string>
+    <string name="a7_title_diachi">Địa Chỉ</string>
 
 </resources>

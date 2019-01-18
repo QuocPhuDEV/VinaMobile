@@ -81,29 +81,28 @@ public class A4_Information_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_a4__information_, container, false);
+        try {
+            View view = inflater.inflate(R.layout.fragment_a4__information_, container, false);
 
-        recyclerView = view.findViewById(R.id.a4_recycler_view);
-        productsList = new ArrayList<>();
-        mAdapter = new A4_Apdater(getContext(), productsList);
+            recyclerView = view.findViewById(R.id.a4_recycler_view);
+            productsList = new ArrayList<>();
+            mAdapter = new A4_Apdater(getContext(), productsList);
 
-//        ProgressDialog dialog = new ProgressDialog(getActivity());
-//
-//        dialog.setMessage("hello");
-//        dialog.show();
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setNestedScrollingEnabled(false);
+            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 3);
+            recyclerView.setLayoutManager(layoutManager);
+            recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(8), true));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(mAdapter);
+            recyclerView.setNestedScrollingEnabled(false);
 
-        fetchInformationItems();
-        //dialog.dismiss();
+            fetchInformationItems();
 
-        return view;
+            return view;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //region XỬ LÝ EVENTS
@@ -111,7 +110,7 @@ public class A4_Information_Fragment extends Fragment {
     // Xử lý file Json
     private void fetchInformationItems() {
         try {
-            
+
             JsonArrayRequest request = new JsonArrayRequest(URL,
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -163,20 +162,24 @@ public class A4_Information_Fragment extends Fragment {
             int position = parent.getChildAdapterPosition(view); // item position
             int column = position % spanCount; // item column
 
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+            try {
+                if (includeEdge) {
+                    outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
+                    outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
 
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
+                    if (position < spanCount) { // top edge
+                        outRect.top = spacing;
+                    }
+                    outRect.bottom = spacing; // item bottom
+                } else {
+                    outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
+                    outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                    if (position >= spanCount) {
+                        outRect.top = spacing; // item top
+                    }
                 }
-                outRect.bottom = spacing; // item bottom
-            } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }

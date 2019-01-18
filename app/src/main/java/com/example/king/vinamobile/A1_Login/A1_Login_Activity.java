@@ -180,25 +180,34 @@ public class A1_Login_Activity extends AppCompatActivity {
 
     // Kiểm tra nhập liệu
     public boolean checkKeycode() {
-
-        if (TextUtils.isEmpty(edUser.getText().toString()) || TextUtils.isEmpty(edPassword.getText().toString())) {
-            Toast.makeText(this, R.string.a1_error_empty, Toast.LENGTH_SHORT).show();
+        try {
+            if (TextUtils.isEmpty(edUser.getText().toString()) || TextUtils.isEmpty(edPassword.getText().toString())) {
+                Toast.makeText(this, R.string.a1_error_empty, Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
-        } else {
-            return true;
         }
     }
 
     // Xử lý format số điện thoại
     public String changeFormatPhoneNumber(String phoneNumber) {
         String mPhoneNumber = "";
-
-        if (phoneNumber.indexOf("+") != -1) {
-            mPhoneNumber = phoneNumber.replace("+84", "0");
-        } else {
-            mPhoneNumber = phoneNumber;
+        try {
+            if (phoneNumber.indexOf("+") != -1) {
+                mPhoneNumber = phoneNumber.replace("+84", "0");
+            } else {
+                mPhoneNumber = phoneNumber;
+            }
+            return mPhoneNumber;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return mPhoneNumber;
+
     }
 
     // Lấy số điện thoại

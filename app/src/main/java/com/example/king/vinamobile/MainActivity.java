@@ -103,35 +103,38 @@ public class MainActivity extends AppCompatActivity
 
     //region ÁNH XẠ ĐỐI TƯỢNG
     public void AddObject() {
+        try {
+            // Thêm đối tượng tool bar
+            toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        // Thêm đối tượng tool bar
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            // Gọi navigation view
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
+            // Thêm events cho navagation view
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.setItemIconTintList(null);
+            // Thêm đối tượng navigation header
+            View header = navigationView.getHeaderView(0);
+            nav_header_main_TenKH = (TextView) header.findViewById(R.id.nav_header_main_TenKH);
+            nav_header_main_SDT = (TextView) header.findViewById(R.id.nav_header_main_SDT);
+            nav_header_img = (CircleImageView) header.findViewById(R.id.nav_header_img);
 
-        // Gọi navigation view
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            // Gọi navigation buttom
+            BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+            navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+            navigation.setItemIconTintList(null);
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
+            layoutParams.setBehavior(new M0_Bottom_Navigation());
 
-        // Thêm events cho navagation view
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        navigationView.setItemIconTintList(null);
-        // Thêm đối tượng navigation header
-        View header = navigationView.getHeaderView(0);
-        nav_header_main_TenKH = (TextView) header.findViewById(R.id.nav_header_main_TenKH);
-        nav_header_main_SDT = (TextView) header.findViewById(R.id.nav_header_main_SDT);
-        nav_header_img = (CircleImageView) header.findViewById(R.id.nav_header_img);
-
-        // Gọi navigation buttom
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        navigation.setItemIconTintList(null);
-        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
-        layoutParams.setBehavior(new M0_Bottom_Navigation());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
     //endregion
@@ -309,30 +312,34 @@ public class MainActivity extends AppCompatActivity
 
     // Xác nhận logout
     public void confirmLogout() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setTitle(getString(R.string.main_confirm_logout_title_alert));
-        dialog.setMessage(getString(R.string.main_confirm_logout_message_alert));
+        try {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setTitle(getString(R.string.main_confirm_logout_title_alert));
+            dialog.setMessage(getString(R.string.main_confirm_logout_message_alert));
 
-        DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                switch (i) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        // logout
-                        Intent intent = new Intent(MainActivity.this, A1_Login_Activity.class);
-                        startActivity(intent);
-                        finish();
-                        break;
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        break;
+            DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            // logout
+                            Intent intent = new Intent(MainActivity.this, A1_Login_Activity.class);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
+                    }
                 }
-            }
-        };
+            };
 
-        dialog.setPositiveButton(getString(R.string.main_confirm_logout_button_ok_alert), clickListener);
-        dialog.setNegativeButton(getString(R.string.main_confirm_logout_button_cancel_alert), clickListener);
-        dialog.setIcon(R.drawable.main_user_confirm);
-        dialog.show();
+            dialog.setPositiveButton(getString(R.string.main_confirm_logout_button_ok_alert), clickListener);
+            dialog.setNegativeButton(getString(R.string.main_confirm_logout_button_cancel_alert), clickListener);
+            dialog.setIcon(R.drawable.main_user_confirm);
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

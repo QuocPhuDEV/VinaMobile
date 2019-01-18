@@ -22,7 +22,7 @@ import info.androidhive.barcode.BarcodeReader;
  * A simple {@link Fragment} subclass.
  */
 public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeReaderListener {
-    
+
     //region KHAI BÁO BIẾN TOÀN CỤC
     private static final String TAG = A3_Scan_Fragment.class.getSimpleName();
     private BarcodeReader barcodeReader;
@@ -53,34 +53,42 @@ public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeR
 
     @Override
     public void onScanned(final Barcode barcode) {
-        Log.e(TAG, "onScanned: " + barcode.displayValue);
-        barcodeReader.playBeep();
+        try {
+            Log.e(TAG, "onScanned: " + barcode.displayValue);
+            barcodeReader.playBeep();
 
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getActivity(), "Barcode: " + barcode.displayValue, Toast.LENGTH_SHORT).show();
-            }
-        });
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(), "Barcode: " + barcode.displayValue, Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+
+        }
 
     }
 
     @Override
     public void onScannedMultiple(List<Barcode> barcodes) {
-        Log.e(TAG, "onScannedMultiple: " + barcodes.size());
+        try {
+            Log.e(TAG, "onScannedMultiple: " + barcodes.size());
 
-        String codes = "";
-        for (Barcode barcode : barcodes) {
-            codes += barcode.displayValue + " , ";
-        }
-
-        final String finalCodes = codes;
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getActivity(), "Barcodes: " + finalCodes, Toast.LENGTH_SHORT).show();
+            String codes = "";
+            for (Barcode barcode : barcodes) {
+                codes += barcode.displayValue + " , ";
             }
-        });
+
+            final String finalCodes = codes;
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getActivity(), "Barcodes: " + finalCodes, Toast.LENGTH_SHORT).show();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

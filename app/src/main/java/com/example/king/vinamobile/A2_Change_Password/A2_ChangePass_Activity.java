@@ -48,8 +48,12 @@ public class A2_ChangePass_Activity extends AppCompatActivity {
 
     //region LOAD FORM
     public void LoadForm() {
-        Intent intent = getIntent();
-        phoneNumber = intent.getStringExtra("phoneNumber");
+        try {
+            Intent intent = getIntent();
+            phoneNumber = intent.getStringExtra("phoneNumber");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //endregion
 
@@ -106,15 +110,19 @@ public class A2_ChangePass_Activity extends AppCompatActivity {
     }
 
     // Hiển thị mật khẩu
-    public void showPassword(View view){
-        if (chkShowPass.isChecked()){
-            edOldPassword.setTransformationMethod(null);
-            edNewPassword.setTransformationMethod(null);
-            edConfirmPassword.setTransformationMethod(null);
-        }else {
-            edOldPassword.setTransformationMethod(new PasswordTransformationMethod());
-            edNewPassword.setTransformationMethod(new PasswordTransformationMethod());
-            edConfirmPassword.setTransformationMethod(new PasswordTransformationMethod());
+    public void showPassword(View view) {
+        try {
+            if (chkShowPass.isChecked()) {
+                edOldPassword.setTransformationMethod(null);
+                edNewPassword.setTransformationMethod(null);
+                edConfirmPassword.setTransformationMethod(null);
+            } else {
+                edOldPassword.setTransformationMethod(new PasswordTransformationMethod());
+                edNewPassword.setTransformationMethod(new PasswordTransformationMethod());
+                edConfirmPassword.setTransformationMethod(new PasswordTransformationMethod());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
     //endregion
