@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#484848</color>
-    <color name="colorPrimaryDark">#000000</color>
+    <!--<color name="colorPrimary">#484848</color>-->
+    <!--<color name="colorPrimaryDark">#000000</color>-->
+    <color name="colorPrimary">#01579b</color>
+    <color name="colorPrimaryDark">#002f6c</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="white">#FFFFFF</color>
@@ -128,6 +130,7 @@
     <color name="light_sea_green">#20B2AA</color>
     <color name="dodger_blue">#1E90FF</color>
     <color name="midnight_blue">#191970</color>
+    <color name="blue_light">#5e92f3</color>
     <color name="aqua">#00FFFF</color>
     <color name="cyan">#00FFFF</color>
     <color name="spring_green">#00FF7F</color>

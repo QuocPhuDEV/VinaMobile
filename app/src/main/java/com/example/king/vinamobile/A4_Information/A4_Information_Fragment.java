@@ -43,7 +43,7 @@ public class A4_Information_Fragment extends Fragment {
 
     //region KHAI BÁO BIẾN TOÀN CỤC
     private static final String TAG = A4_Information_Fragment.class.getSimpleName();
-    private static final String URL = "https://api.androidhive.info/json/movies_2017.json";
+    private static final String URL = "https://api.myjson.com/bins/ssigw";
     //private static final String URL = "http://www.json-generator.com/api/json/get/bPyXpvAVDS?indent=2";
 
     private RecyclerView recyclerView;

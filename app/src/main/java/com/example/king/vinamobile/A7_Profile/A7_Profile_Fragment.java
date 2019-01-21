@@ -99,7 +99,7 @@ public class A7_Profile_Fragment extends Fragment {
             // Set tiêu để form action bar
             ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(getString(R.string.a7_form_title));
             // Set màu sắc action bar
-            ((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+            //((AppCompatActivity) getActivity()).getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
 
             // ẩn thanh action bar
             //((AppCompatActivity) getActivity()).getSupportActionBar().hide();
