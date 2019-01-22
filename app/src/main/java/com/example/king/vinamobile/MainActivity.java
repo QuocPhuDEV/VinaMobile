@@ -39,6 +39,7 @@ import com.example.king.vinamobile.A1_Login.A1_Login_Activity;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
+import com.example.king.vinamobile.A6_Menu.A6_Menu_Fragment;
 import com.example.king.vinamobile.A7_Profile.A7_Profile_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity
     // Load trang chủ
     public void loadHomeFragment() {
         toolbar.setTitle(getString(R.string.bottom_Information));
-        loadFragment(new A4_Information_Fragment());
+        loadFragment(new A6_Menu_Fragment());
     }
 
     // Lấy sđt và password login
@@ -225,7 +226,7 @@ public class MainActivity extends AppCompatActivity
                     toolbar.setTitle(getString(R.string.bottom_Information));
 
                     // Gọi màn hình
-                    fragment = new A4_Information_Fragment();
+                    fragment = new A6_Menu_Fragment();
                     loadFragment(fragment);
 
                     return true;

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".A6_Menu.A6_Menu_Fragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/a6_menu_img_banner"
+            android:layout_width="match_parent"
+            android:layout_height="152dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/a6_banner_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/a6_menu_img_banner"
+            tools:layout_editor_absoluteX="0dp">
+
+            <ImageView
+                android:id="@+id/a6_img_menu_scan"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_barcode"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_scan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/a6_menu_scan"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_scan" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_product"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_meu_products"
+                app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_report"
+                app:layout_constraintStart_toEndOf="@+id/a6_img_menu_scan"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/a6_menu_products"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/textView"
+                app:layout_constraintHorizontal_bias="0.137"
+                app:layout_constraintStart_toEndOf="@+id/a6_text_menu_scan"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_product" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_report"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_report"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/a6_menu_report"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_report" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_sign_in"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_inventory"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/a6_menu_inventory"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_sign_in" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_buy"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_buy"
+                app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_scan_history"
+                app:layout_constraintStart_toEndOf="@+id/a6_img_menu_sign_in"
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_product" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="60dp"
+                android:text="@string/a6_menu_buy"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/a6_text_menu_scan_history"
+                app:layout_constraintStart_toEndOf="@+id/a6_text_menu_sign_in"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_buy" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_scan_history"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_scan_history"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_scan_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="20dp"
+                android:text="@string/a6_menu_scan_history"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_scan_history" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_info"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_sign_in" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/a6_menu_info"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_info" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_survery"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="100dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_survery"
+                app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_account"
+                app:layout_constraintStart_toEndOf="@+id/a6_img_menu_info"
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_buy" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_survery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="60dp"
+                android:text="@string/a6_menu_survery"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/a6_text_menu_account"
+                app:layout_constraintStart_toEndOf="@+id/a6_text_menu_info"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_survery" />
+
+            <ImageView
+                android:id="@+id/a6_img_menu_account"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/a6_menu_radius_button"
+                android:src="@drawable/a6_menu_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan_history" />
+
+            <TextView
+                android:id="@+id/a6_text_menu_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/a6_menu_account"
+                android:textColor="@color/blue"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_account" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

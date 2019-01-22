@@ -7,7 +7,7 @@
     <string name="nav_TenKH">Tên Khách Hàng</string>
     <string name="nav_SDT">Số Điện Thoại</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Thiết lập phần mềm</string>
+    <string name="action_settings_language">Thiết lập ngôn ngữ</string>
 
     <!--NAVIGATION DRAWER-->
     <string name="nav_input">Nhập kho</string>
@@ -60,6 +60,18 @@
 
     <!--A3_SCAN-->
     <string name="a3_error_scan_qr_code">Scan QR Code hàng hoá nhập kho</string>
+
+    <!--A6_MENU-->
+    <string name="a6_menu_scan">Scan hàng hóa</string>
+    <string name="a6_menu_products">Sản phẩm</string>
+    <string name="a6_menu_report">Thống kê</string>
+    <string name="a6_menu_signin">Đăng ký</string>
+    <string name="a6_menu_buy">Mua hàng</string>
+    <string name="a6_menu_inventory">Tồn kho</string>
+    <string name="a6_menu_scan_history">Lịch sử scan</string>
+    <string name="a6_menu_info">Khuyến mãi</string>
+    <string name="a6_menu_survery">CSKH</string>
+    <string name="a6_menu_account">Tài khoản</string>
 
     <!--A7 PROFILE-->
     <string name="a7_form_title">Thông tin tài khoản</string>
