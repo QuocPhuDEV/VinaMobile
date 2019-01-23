@@ -87,6 +87,7 @@
 
     <string name="a7_first_tab">Đổi thông tin</string>
     <string name="a7_second_tab">Đổi mật khẩu</string>
+    <string name="todo">TODO</string>
 
 
 </resources>

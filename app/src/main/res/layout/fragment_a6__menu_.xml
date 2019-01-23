@@ -17,10 +17,7 @@
             android:layout_height="152dp"
             android:scaleType="fitXY"
             android:src="@drawable/a6_banner_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:contentDescription="@string/a6_menu_info"/>
 
     </android.support.constraint.ConstraintLayout>
 
@@ -45,7 +42,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_barcode"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/a6_menu_scan"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_scan"
@@ -64,13 +62,14 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="100dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginEnd="100dp"
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_meu_products"
                 app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_report"
                 app:layout_constraintStart_toEndOf="@+id/a6_img_menu_scan"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/a6_menu_products" />
 
             <TextView
                 android:id="@+id/a6_text_menu_product"
@@ -95,7 +94,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_report"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/a6_menu_report"/>
 
             <TextView
                 android:id="@+id/textView"
@@ -118,7 +118,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_inventory"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan" />
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan"
+                android:contentDescription="@string/a6_menu_inventory"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_sign_in"
@@ -143,7 +144,8 @@
                 android:src="@drawable/a6_menu_buy"
                 app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_scan_history"
                 app:layout_constraintStart_toEndOf="@+id/a6_img_menu_sign_in"
-                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_product" />
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_product"
+                android:contentDescription="@string/a6_menu_buy"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_buy"
@@ -168,7 +170,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_scan_history"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                android:contentDescription="@string/a6_menu_scan_history"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_scan_history"
@@ -191,7 +194,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_info"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_sign_in" />
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_sign_in"
+                android:contentDescription="@string/a6_menu_info"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_info"
@@ -216,7 +220,8 @@
                 android:src="@drawable/a6_menu_survery"
                 app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_account"
                 app:layout_constraintStart_toEndOf="@+id/a6_img_menu_info"
-                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_buy" />
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_buy"
+                android:contentDescription="@string/a6_menu_survery"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_survery"
@@ -241,7 +246,8 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:src="@drawable/a6_menu_account"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan_history" />
+                app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan_history"
+                android:contentDescription="@string/a6_menu_account"/>
 
             <TextView
                 android:id="@+id/a6_text_menu_account"
