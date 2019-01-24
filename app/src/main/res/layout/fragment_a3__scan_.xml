@@ -137,7 +137,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray"></ScrollView>
+        android:background="@color/white">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </ScrollView>
 
 
 </LinearLayout>
