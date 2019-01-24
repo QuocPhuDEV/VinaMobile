@@ -8,6 +8,7 @@
     tools:context=".A3_Scan.A3_Scan_Fragment">
 
     <!-- Barcode Reader fragment -->
+
     <fragment
         android:id="@+id/a3_barcode_fragment"
         android:name="info.androidhive.barcode.BarcodeReader"
@@ -35,7 +36,7 @@
 
         <TextView
             android:id="@+id/a3_scan_session"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@drawable/a6_menu_radius_button"
             android:gravity="center"
@@ -48,7 +49,7 @@
 
         <TextView
             android:id="@+id/a3_scan_group"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@drawable/a6_menu_radius_button"
             android:gravity="center"
@@ -61,7 +62,7 @@
 
         <TextView
             android:id="@+id/a3_scan_total_group"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@drawable/a6_menu_radius_button"
             android:gravity="center"
@@ -74,7 +75,7 @@
 
         <TextView
             android:id="@+id/a3_scan_total"
-            android:layout_width="100dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@drawable/a6_menu_radius_button"
             android:gravity="center"
@@ -84,7 +85,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/a3_scan_total_group" />
-
 
     </android.support.constraint.ConstraintLayout>
 
@@ -97,7 +97,11 @@
             android:id="@+id/a3_title_stt"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:textSize="12sp"
+            android:gravity="center"
+            android:text="@string/a3_scan_title_stt"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/a3_title_product_no"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
@@ -106,7 +110,11 @@
             android:id="@+id/a3_title_product_no"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:textSize="12sp"
+            android:gravity="center"
+            android:text="@string/a3_scan_title_product"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/a3_title_serial"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/a3_title_stt" />
@@ -115,17 +123,21 @@
             android:id="@+id/a3_title_serial"
             android:layout_width="0dp"
             android:layout_height="30dp"
-            android:textSize="12sp"
+            android:gravity="center"
+            android:text="@string/a3_scan_title_serial"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/a3_title_product_no" />
+
     </android.support.constraint.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-    </ScrollView>
+        android:layout_height="match_parent"
+        android:background="@color/gray"></ScrollView>
 
 
 </LinearLayout>
