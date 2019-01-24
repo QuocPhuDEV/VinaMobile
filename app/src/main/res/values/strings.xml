@@ -60,6 +60,10 @@
 
     <!--A3_SCAN-->
     <string name="a3_error_scan_qr_code">Scan QR Code hàng hoá nhập kho</string>
+    <string name="a3_scan_session">Phiên: </string>
+    <string name="a3_scan_group">Nhóm: </string>
+    <string name="a3_scan_qty_group">SL / Nhóm: </string>
+    <string name="a3_scan_qty_total">SL tổng: </string>
 
     <!--A6_MENU-->
     <string name="a6_menu_scan">Scan hàng hóa</string>

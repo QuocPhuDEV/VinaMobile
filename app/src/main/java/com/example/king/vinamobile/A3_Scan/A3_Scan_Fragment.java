@@ -51,6 +51,7 @@ public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeR
         return view;
     }
 
+    //region OVERRIDE CÁC PHƯƠNG THỨC SCAN
     @Override
     public void onScanned(final Barcode barcode) {
         try {
@@ -106,5 +107,8 @@ public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeR
     public void onCameraPermissionDenied() {
         Toast.makeText(getActivity(), "Camera permission denied!", Toast.LENGTH_LONG).show();
     }
+    //endregion
+
+
 
 }

@@ -17,7 +17,7 @@
             android:layout_height="152dp"
             android:contentDescription="@string/a6_menu_info"
             android:scaleType="fitXY"
-            android:src="@drawable/a6_menu_banner3" />
+            android:src="@drawable/a6_menu_banner2" />
 
     </android.support.constraint.ConstraintLayout>
 
