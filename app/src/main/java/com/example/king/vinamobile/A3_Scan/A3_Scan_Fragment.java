@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -50,6 +53,27 @@ public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeR
 
         return view;
     }
+
+
+    //region LOAD MENU
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.a2_changepass_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.a3_menu_sync_data){
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    //endregion
 
     //region OVERRIDE CÁC PHƯƠNG THỨC SCAN
     @Override
@@ -108,7 +132,6 @@ public class A3_Scan_Fragment extends Fragment implements BarcodeReader.BarcodeR
         Toast.makeText(getActivity(), "Camera permission denied!", Toast.LENGTH_LONG).show();
     }
     //endregion
-
 
 
 }
