@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/a3_menu_sync_data"
+        android:icon="@drawable/a3_scan_sync_data"
+        android:title="Send Data"
+        app:showAsAction="always" />
+
+</menu>
