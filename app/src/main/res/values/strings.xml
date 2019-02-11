@@ -77,8 +77,8 @@
     <string name="a6_menu_inventory">Tồn kho</string>
     <string name="a6_menu_scan_history">Lịch sử scan</string>
     <string name="a6_menu_info">Khuyến mãi</string>
-    <string name="a6_menu_survery">CSKH</string>
-    <string name="a6_menu_account">Tài khoản</string>
+    <string name="a6_menu_customer_survey">CSKH</string>
+    <string name="a6_menu_account">Đăng kí tài khoản</string>
 
     <!--A7 PROFILE-->
     <string name="a7_form_title">Thông tin tài khoản</string>
@@ -94,7 +94,19 @@
 
     <string name="a7_first_tab">Đổi thông tin</string>
     <string name="a7_second_tab">Đổi mật khẩu</string>
-    <string name="todo">TODO</string>
+
+    <!-- A9 CUSTOMER SURVEY-->
+    <string name="a9_activity_title"> Khảo sát thông tin khách hàng</string>
+
+    <!--A8 SIGN IN-->
+    <string name="a8_full_name">Họ và tên</string>
+    <string name="a8_phone_number">Số điện thoại</string>
+    <string name="a8_date_of_birth">Ngày sinh</string>
+    <string name="a8_address">Địa chỉ</string>
+    <string name="a8_address_city">Thành phố</string>
+    <string name="a8_address_detail">Số nhà, Đường, Phường</string>
+    <string name="a8_btn_cancel">Hủy</string>
+    <string name="a8_btn_signIn">Đăng ký</string>
 
 
 </resources>

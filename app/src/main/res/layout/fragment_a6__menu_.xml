@@ -200,7 +200,7 @@
                 android:background="@drawable/a6_menu_radius_button"
                 android:contentDescription="@string/a6_menu_info"
                 android:src="@drawable/a6_menu_info"
-                app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_survery"
+                app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_survey"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_sign_in" />
@@ -218,31 +218,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_info" />
 
             <ImageView
-                android:id="@+id/a6_img_menu_survery"
+                android:id="@+id/a6_img_menu_survey"
                 android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="60dp"
                 android:layout_marginEnd="30dp"
                 android:background="@drawable/a6_menu_radius_button"
-                android:contentDescription="@string/a6_menu_survery"
-                android:src="@drawable/a6_menu_survery"
+                android:contentDescription="@string/a6_menu_customer_survey"
+                android:src="@drawable/a6_menu_survey"
                 app:layout_constraintEnd_toStartOf="@+id/a6_img_menu_account"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/a6_img_menu_info"
                 app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_buy" />
 
             <TextView
-                android:id="@+id/a6_text_menu_survery"
+                android:id="@+id/a6_text_menu_survey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
-                android:text="@string/a6_menu_survery"
+                android:text="@string/a6_menu_customer_survey"
                 android:textColor="@color/blue"
                 android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="@+id/a6_img_menu_survery"
-                app:layout_constraintStart_toStartOf="@+id/a6_img_menu_survery"
-                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_survery" />
+                app:layout_constraintEnd_toEndOf="@+id/a6_img_menu_survey"
+                app:layout_constraintStart_toStartOf="@+id/a6_img_menu_survey"
+                app:layout_constraintTop_toBottomOf="@+id/a6_img_menu_survey" />
 
             <ImageView
                 android:id="@+id/a6_img_menu_account"
@@ -255,7 +255,7 @@
                 android:src="@drawable/a6_menu_account"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/a6_img_menu_survery"
+                app:layout_constraintStart_toEndOf="@+id/a6_img_menu_survey"
                 app:layout_constraintTop_toBottomOf="@+id/a6_text_menu_scan_history" />
 
             <TextView

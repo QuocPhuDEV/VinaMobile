@@ -27,6 +27,7 @@ public class Create_Table extends SQLiteOpenHelper {
 
     // Tên bảng
     private static final String TABLE_NAME_ACCOUNT = "TBT_ACCOUNT";
+    private static final String TABLE_NAME_ZONE = "TBM_KHUVUC";
 
 
     // các cột
@@ -41,6 +42,11 @@ public class Create_Table extends SQLiteOpenHelper {
     private static final String TBT_ACCOUNT_DIACHI = "DiaChi";
     private static final String TBT_ACCOUNT_HINHANH = "HinhAnh";
 
+    //BẢNG TBT_CITY
+    private static final String TBM_ZONE_KHUVUC = "KhuVuc";
+    private static final String TBM_ZONE_TINHTP = "TinhTP";
+    private static final String TBM_ZONE_QUANHUYEN = "QuanHuyen";
+
     //endregion
 
     public Create_Table(Context context) {
@@ -50,12 +56,14 @@ public class Create_Table extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Create_Table_TBT_ACCOUNT(sqLiteDatabase);
+        Create_Table_TBM_ZONE(sqLiteDatabase);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Drop_Table_TBT_ACCOUNT(sqLiteDatabase);
+        Drop_Table_TBM_ZONE(sqLiteDatabase);
     }
 
     //region TẠO BẢNG TRONG DATABASE
@@ -80,6 +88,22 @@ public class Create_Table extends SQLiteOpenHelper {
         }
     }
 
+    // Tạo bảng TBT_CITY
+    public void Create_Table_TBM_ZONE(SQLiteDatabase sqLiteDatabase) {
+        try {
+            // script tạo bảng
+            String script = "CREATE TABLE " + TABLE_NAME_ZONE + " ("
+                    + TBM_ZONE_KHUVUC + " VARCHAR(100), "
+                    + TBM_ZONE_TINHTP + " VARCHAR(100), "
+                    + TBM_ZONE_QUANHUYEN + " VARCHAR(100) PRIMARY KEY " +" )";
+
+            // chạy lệnh tạo bảng
+            sqLiteDatabase.execSQL(script);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //endregion
 
     //region XÓA BẢNG TRONG DATABASE
@@ -89,6 +113,23 @@ public class Create_Table extends SQLiteOpenHelper {
         try {
             //script xóa bảng
             String script = "DROP TABLE IF EXISTS " + TABLE_NAME_ACCOUNT;
+
+            // Xóa bảng
+            sqLiteDatabase.execSQL(script);
+
+            // tạo lại bảng
+            onCreate(sqLiteDatabase);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // xóa bảng TBT_CITY nếu tồn tại, tạo lại
+    public void Drop_Table_TBM_ZONE(SQLiteDatabase sqLiteDatabase) {
+
+        try {
+            //script xóa bảng
+            String script = "DROP TABLE IF EXISTS " + TABLE_NAME_ZONE;
 
             // Xóa bảng
             sqLiteDatabase.execSQL(script);

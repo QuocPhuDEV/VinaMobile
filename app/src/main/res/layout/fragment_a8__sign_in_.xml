@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,14 +9,202 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/gray">
+        android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:id="@+id/a8_img_avt"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="155dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="155dp"
+            android:background="@drawable/a1_login_radius_image"
+            android:src="@drawable/a1_login_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/a8_signin_plus"
+            app:backgroundTint="@android:color/transparent"
+            app:elevation="0dp"
+            app:fabCustomSize="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/a8_img_avt"
+            app:layout_constraintEnd_toEndOf="@+id/a8_img_avt" />
+
+        <ImageView
+            android:id="@+id/a8_img_full_name"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/a8_full_name"
+            android:scaleType="fitXY"
+            android:src="@drawable/a1_login_user"
+            app:layout_constraintBottom_toBottomOf="@+id/a8_ed_full_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a8_ed_full_name" />
+
+        <EditText
+            android:id="@+id/a8_ed_full_name"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a8_radius_edittext"
+            android:hint="@string/a8_full_name"
+            android:inputType="text"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/a8_img_full_name"
+            app:layout_constraintTop_toBottomOf="@+id/a8_img_avt" />
+
+        <ImageView
+            android:id="@+id/a8_img_phone_number"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/a8_phone_number"
+            android:scaleType="fitXY"
+            android:src="@drawable/a8_img_phone_number"
+            app:layout_constraintBottom_toBottomOf="@+id/a8_ed_phone_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a8_ed_phone_number" />
+
+        <EditText
+            android:id="@+id/a8_ed_phone_number"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a8_radius_edittext"
+            android:hint="@string/a8_phone_number"
+            android:inputType="phone"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a8_img_phone_number"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_full_name" />
+
+
+        <ImageView
+            android:id="@+id/a8_img_date_of_birth"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/a8_date_of_birth"
+            android:scaleType="fitXY"
+            android:src="@drawable/a8_img_date_of_birth"
+            app:layout_constraintBottom_toBottomOf="@+id/a8_ed_date_of_birth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a8_ed_date_of_birth" />
+
+        <TextView
+            android:id="@+id/a8_ed_date_of_birth"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a8_radius_edittext"
+            android:hint="@string/a8_date_of_birth"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a8_img_date_of_birth"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_phone_number" />
+
+
+        <ImageView
+            android:id="@+id/a8_img_address"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:contentDescription="@string/a8_address"
+            android:scaleType="fitXY"
+            android:src="@drawable/a8_img_address"
+            app:layout_constraintBottom_toBottomOf="@+id/a8_sp_city"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a8_sp_city" />
+
+        <Spinner
+            android:id="@+id/a8_sp_city"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/a8_sp_county"
+            app:layout_constraintStart_toEndOf="@+id/a8_img_address"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_date_of_birth"></Spinner>
+
+        <Spinner
+            android:id="@+id/a8_sp_county"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a8_sp_city"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_date_of_birth"></Spinner>
+
+        <EditText
+            android:id="@+id/a8_ed_address"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a8_radius_edittext"
+            android:hint="@string/a8_address_detail"
+            android:inputType="text"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a8_sp_city" />
+
+        <Button
+            android:id="@+id/a8_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/a1_login_radius_button"
+            android:text="@string/a8_btn_cancel"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/a8_btn_submit"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />
+
+        <Button
+            android:id="@+id/a8_btn_submit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/a1_login_radius_button"
+            android:text="@string/a8_btn_signIn"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/a8_btn_cancel"
+            app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />
 
     </android.support.constraint.ConstraintLayout>
 
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

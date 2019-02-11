@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
 import com.example.king.vinamobile.A7_Profile.A7_Profile_Fragment;
+import com.example.king.vinamobile.A8_SignIn.A8_SignIn_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Fragment;
 import com.example.king.vinamobile.R;
 
 /**
@@ -21,7 +23,7 @@ import com.example.king.vinamobile.R;
 public class A6_Menu_Fragment extends Fragment {
 
     // region KHAI BÁO BIẾN TOÀN CỤC
-    private ImageView menuScan, menuProducts, menuAccount;
+    private ImageView menuScan, menuProducts, menuAccount, menuSurvey;
 
     //endregion
 
@@ -39,6 +41,7 @@ public class A6_Menu_Fragment extends Fragment {
         menuScan = (ImageView) view.findViewById(R.id.a6_img_menu_scan);
         menuProducts = (ImageView) view.findViewById(R.id.a6_img_menu_product);
         menuAccount = (ImageView) view.findViewById(R.id.a6_img_menu_account);
+        menuSurvey = (ImageView) view.findViewById(R.id.a6_img_menu_survey);
 
 
         // Gọi sự kiện xử lý
@@ -85,7 +88,21 @@ public class A6_Menu_Fragment extends Fragment {
                 public void onClick(View view) {
                     try {
                         Fragment fragment;
-                        fragment = new A7_Profile_Fragment();
+                        fragment = new A8_SignIn_Fragment();
+                        loadFragment(fragment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            // Menu Customer Survey
+            menuSurvey.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Fragment fragment;
+                        fragment = new A9_Survey_Fragment();
                         loadFragment(fragment);
                     } catch (Exception e) {
                         e.printStackTrace();
