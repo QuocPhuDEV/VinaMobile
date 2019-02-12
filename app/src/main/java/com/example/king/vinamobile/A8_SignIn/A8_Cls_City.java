@@ -42,10 +42,7 @@ public class A8_Cls_City implements Serializable {
 
     @Override
     public String toString() {
-        return "A8_Cls_City{" +
-                "KhuVuc='" + KhuVuc + '\'' +
-                ", TinhTP='" + TinhTP + '\'' +
-                ", QuanHuyen='" + QuanHuyen + '\'' +
-                '}';
+        return KhuVuc + TinhTP + QuanHuyen;
     }
+
 }

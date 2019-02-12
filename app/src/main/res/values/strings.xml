@@ -107,6 +107,10 @@
     <string name="a8_address_detail">Số nhà, Đường, Phường</string>
     <string name="a8_btn_cancel">Hủy</string>
     <string name="a8_btn_signIn">Đăng ký</string>
+    <string name="a8_title_select_photo">Chọn ảnh</string>
+    <string name="a8_title_spinner_zone">Chọn Khu vực</string>
+    <string name="a8_title_spinner_city">Chọn Tỉnh/TP</string>
+    <string name="a8_title_spinner_county">Chọn Quận/Huyện</string>
 
 
 </resources>
