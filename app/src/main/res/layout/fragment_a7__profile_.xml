@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".A7_Profile.A7_Profile_Fragment">
+    tools:context=".A7_Profile.A7_Profile_Fragment"
+    android:background="@drawable/a7_profile_background_">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="230dp"
-        android:background="@drawable/a7_profile_background_"
+
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

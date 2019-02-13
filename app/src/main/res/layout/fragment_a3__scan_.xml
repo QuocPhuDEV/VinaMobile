@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".A3_Scan.A3_Scan_Fragment">
 
@@ -14,141 +15,147 @@
         android:name="info.androidhive.barcode.BarcodeReader"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         app:auto_focus="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:use_flash="false">
 
-        <!-- Scanner overlay animation -->
-        <!--<info.androidhive.barcode.ScannerOverlay-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="#44000000"-->
-        <!--app:line_color="@color/blue"-->
-        <!--app:line_speed="6"-->
-        <!--app:line_width="4"-->
-        <!--app:square_height="200"-->
-        <!--app:square_width="200" />-->
-    </fragment>
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp">
-
-        <TextView
-            android:id="@+id/a3_scan_session"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a6_menu_radius_button"
-            android:gravity="center"
-            android:text="@string/a3_scan_session"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toStartOf="@+id/a3_scan_group"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/a3_scan_group"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a6_menu_radius_button"
-            android:gravity="center"
-            android:text="@string/a3_scan_group"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toStartOf="@+id/a3_scan_total_group"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a3_scan_session" />
-
-        <TextView
-            android:id="@+id/a3_scan_total_group"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a6_menu_radius_button"
-            android:gravity="center"
-            android:text="@string/a3_scan_qty_group"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toStartOf="@+id/a3_scan_total"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a3_scan_group" />
-
-        <TextView
-            android:id="@+id/a3_scan_total"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:background="@drawable/a6_menu_radius_button"
-            android:gravity="center"
-            android:text="@string/a3_scan_qty_total"
-            android:textColor="@color/black"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a3_scan_total_group" />
-
-    </android.support.constraint.ConstraintLayout>
-
-
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp">
-
-        <TextView
-            android:id="@+id/a3_title_stt"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:background="@drawable/a3_border_textview"
-            android:gravity="center"
-            android:text="@string/a3_scan_title_stt"
-            android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/a3_title_product_no"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/a3_title_product_no"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:background="@drawable/a3_border_textview"
-            android:gravity="center"
-            android:text="@string/a3_scan_title_product"
-            android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/a3_title_serial"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a3_title_stt" />
-
-        <TextView
-            android:id="@+id/a3_title_serial"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:background="@drawable/a3_border_textview"
-            android:gravity="center"
-            android:text="@string/a3_scan_title_serial"
-            android:textColor="@color/blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a3_title_product_no" />
-
-    </android.support.constraint.ConstraintLayout>
-
-    <android.support.v4.widget.NestedScrollView
+         <!--Scanner overlay animation-->
+        <info.androidhive.barcode.ScannerOverlay
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="#44000000"
+        app:line_color="@color/blue"
+        app:line_speed="6"
+        app:line_width="4"
+        app:square_height="200"
+        app:square_width="200" />
+    </fragment>
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="2dp">-->
 
-        </ListView>
-    </android.support.v4.widget.NestedScrollView>
+        <!--<TextView-->
+            <!--android:id="@+id/a3_scan_session"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@drawable/a6_menu_radius_button"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_session"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/a3_scan_group"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_scan_group"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@drawable/a6_menu_radius_button"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_group"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/a3_scan_total_group"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/a3_scan_session" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_scan_total_group"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@drawable/a6_menu_radius_button"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_qty_group"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/a3_scan_total"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/a3_scan_group" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_scan_total"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:background="@drawable/a6_menu_radius_button"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_qty_total"-->
+            <!--android:textColor="@color/black"-->
+            <!--android:textSize="13sp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/a3_scan_total_group" />-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
 
 
-</LinearLayout>
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="4dp">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_title_stt"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="@drawable/a3_border_textview"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_title_stt"-->
+            <!--android:textColor="@color/blue"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/a3_title_product_no"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_title_product_no"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="@drawable/a3_border_textview"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_title_product"-->
+            <!--android:textColor="@color/blue"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/a3_title_serial"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/a3_title_stt" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/a3_title_serial"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="@drawable/a3_border_textview"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/a3_scan_title_serial"-->
+            <!--android:textColor="@color/blue"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.5"-->
+            <!--app:layout_constraintStart_toEndOf="@+id/a3_title_product_no" />-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@color/white">-->
+
+        <!--<ListView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+        <!--</ListView>-->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+
+</android.support.constraint.ConstraintLayout>

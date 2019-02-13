@@ -188,11 +188,11 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_account) {
             fragment = new A7_Profile_Fragment();
-            loadFragment(fragment);
             Bundle bundle = new Bundle();
             bundle.putString(PHONE, mPhoneNumber);
             bundle.putString(PASSWORD, mPassWord);
             fragment.setArguments(bundle);
+            loadFragment(fragment);
         } else if (id == R.id.nav_logout) {
             confirmLogout();
         }
