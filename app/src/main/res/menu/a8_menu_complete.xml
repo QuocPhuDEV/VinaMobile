@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/a8_item_complete"
+        android:icon="@drawable/a8_menu_complete"
+        android:title="@string/a8_btn_signIn"
+        app:showAsAction="always" />
+
+</menu>

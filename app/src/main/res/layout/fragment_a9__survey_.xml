@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".A9_Survey.A9_Survey_Fragment">
 
+    <Button
+        android:id="@+id/a9_btn_survey"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:background="@color/light_blue"
+        android:drawableTop="@drawable/a9_img_survey"
+        android:paddingTop="10dp"
+        android:text="@string/a9_btn_menu_new_survey"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/a9_btn_his"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/a9_btn_his"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/wheat"
+        android:drawableTop="@drawable/a9_img_history"
+        android:paddingTop="10dp"
+        android:text="@string/a9_btn_menu_his_survey"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/a9_btn_survey"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/a9_btn_change"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:background="@color/dark_sea_green"
+        android:drawableTop="@drawable/a9_img_change"
+        android:paddingTop="10dp"
+        android:text="@string/a9_btn_menu_change_survey"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/a9_btn_vote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/a9_btn_survey" />
+
+    <Button
+        android:id="@+id/a9_btn_vote"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/pink"
+        android:drawableTop="@drawable/a9_img_vote"
+        android:paddingTop="10dp"
+        android:text="@string/a9_btn_menu_vote_survey"
+        android:textAllCaps="false"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/a9_btn_change"
+        app:layout_constraintTop_toBottomOf="@+id/a9_btn_his" />
+
+
+</android.support.constraint.ConstraintLayout>

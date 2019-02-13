@@ -18,22 +18,30 @@
             android:layout_marginStart="155dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="155dp"
+            android:layout_marginBottom="30dp"
             android:src="@drawable/a1_login_user"
+            app:layout_constraintBottom_toTopOf="@+id/a8_ed_full_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/a8_btnAddNewImg"
-            android:layout_width="40dp"
+            android:layout_width="139dp"
             android:layout_height="40dp"
+            android:layout_marginStart="266dp"
+            android:layout_marginEnd="216dp"
             android:src="@drawable/a8_signin_plus"
             app:backgroundTint="@android:color/transparent"
             app:elevation="0dp"
             app:fabCustomSize="40dp"
             app:layout_constraintBottom_toBottomOf="@+id/a8_img_avt"
-            app:layout_constraintEnd_toEndOf="@+id/a8_img_avt" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/a8_img_avt"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/a8_img_full_name"
@@ -92,7 +100,6 @@
             app:layout_constraintStart_toEndOf="@+id/a8_img_phone_number"
             app:layout_constraintTop_toBottomOf="@+id/a8_ed_full_name" />
 
-
         <ImageView
             android:id="@+id/a8_img_date_of_birth"
             android:layout_width="30dp"
@@ -105,7 +112,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/a8_ed_date_of_birth" />
 
-        <TextView
+        <EditText
             android:id="@+id/a8_ed_date_of_birth"
             android:layout_width="0dp"
             android:layout_height="40dp"
@@ -113,7 +120,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
             android:background="@drawable/a8_radius_edittext"
+            android:clickable="true"
             android:hint="@string/a8_date_of_birth"
+            android:inputType="date"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -197,51 +206,53 @@
             android:id="@+id/a8_ed_address"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="45dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="5dp"
+            android:layout_marginBottom="60dp"
             android:background="@drawable/a8_radius_edittext"
             android:hint="@string/a8_address_detail"
             android:inputType="text"
             android:textColor="@color/black"
             android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/a8_img_detail_address"
             app:layout_constraintTop_toBottomOf="@+id/a8_sp_city" />
 
-        <Button
-            android:id="@+id/a8_btn_cancel"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/a1_login_radius_button"
-            android:text="@string/a8_btn_cancel"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/a8_btn_submit"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />
+        <!--<Button-->
+        <!--android:id="@+id/a8_btn_cancel"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginStart="55dp"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_marginEnd="50dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:background="@drawable/a1_login_radius_button"-->
+        <!--android:text="@string/a8_btn_cancel"-->
+        <!--android:textColor="@color/white"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/a8_btn_submit"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />-->
 
-        <Button
-            android:id="@+id/a8_btn_submit"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/a1_login_radius_button"
-            android:text="@string/a8_btn_signIn"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/a8_btn_cancel"
-            app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />
+        <!--<Button-->
+        <!--android:id="@+id/a8_btn_submit"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:layout_marginStart="50dp"-->
+        <!--android:layout_marginTop="50dp"-->
+        <!--android:layout_marginEnd="55dp"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:background="@drawable/a1_login_radius_button"-->
+        <!--android:text="@string/a8_btn_signIn"-->
+        <!--android:textColor="@color/white"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.5"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/a8_btn_cancel"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/a8_ed_address" />-->
 
     </android.support.constraint.ConstraintLayout>
 
