@@ -8,27 +8,195 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <!--<android.support.constraint.ConstraintLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent">-->
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <FrameLayout
-            android:id="@+id/frame_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+        <Button
+            android:id="@+id/main_menu_scan"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_scan"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_scan"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_scan_his"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="?android:attr/windowBackground"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/navigation" />
-    <!--</android.support.constraint.ConstraintLayout>-->
+        <Button
+            android:id="@+id/main_menu_scan_his"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_scan_his"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_scan_history"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_inventory"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_scan"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/main_menu_inventory"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_inventory"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_inventory"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_scan_his"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/main_menu_product"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_product"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_products"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_buy"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_scan" />
+
+        <Button
+            android:id="@+id/main_menu_buy"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_shopping"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_buy"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_sale"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_product"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_scan_his" />
+
+        <Button
+            android:id="@+id/main_menu_sale"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_sale"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_info"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_buy"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_inventory" />
+
+        <Button
+            android:id="@+id/main_menu_report"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_report"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_report"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_survey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_product" />
+
+        <Button
+            android:id="@+id/main_menu_survey"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_survey"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_customer_survey"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/main_menu_account"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_report"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_buy" />
+
+        <Button
+            android:id="@+id/main_menu_account"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/a1_login_radiusgrid"
+            android:drawableTop="@drawable/main_menu_img_account"
+            android:paddingTop="10dp"
+            android:text="@string/a6_menu_account"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/main_menu_survey"
+            app:layout_constraintTop_toBottomOf="@+id/main_menu_sale" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
 
 </android.support.design.widget.CoordinatorLayout>

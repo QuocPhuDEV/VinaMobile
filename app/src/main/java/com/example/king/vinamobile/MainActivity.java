@@ -30,6 +30,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,6 +42,8 @@ import com.example.king.vinamobile.A3_Scan.A3_Scan_Home_Fragment;
 import com.example.king.vinamobile.A4_Information.A4_Information_Fragment;
 import com.example.king.vinamobile.A6_Menu.A6_Menu_Fragment;
 import com.example.king.vinamobile.A7_Profile.A7_Profile_Fragment;
+import com.example.king.vinamobile.A8_SignIn.A8_SignIn_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Fragment;
 import com.example.king.vinamobile.M0_BottomNavigation.M0_Bottom_Navigation;
 
 import java.io.InputStream;
@@ -54,6 +57,9 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     //region KHAI BÁO BIẾN TOÀN CỤC
     private Toolbar toolbar;
+    private Button menu_Account, menu_Survey, menu_Scan;
+
+
     public static final String PHONE = "PHONE";
     public static final String PASSWORD = "PASSWORD";
 
@@ -93,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         loadHomeFragment();
         readDataFormLogin();
         getAllDataUserLogin();
+        onClickMenu();
 
     }
 
@@ -133,6 +140,11 @@ public class MainActivity extends AppCompatActivity
             CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
             layoutParams.setBehavior(new M0_Bottom_Navigation());
 
+            // Ánh xạ các button menu
+            menu_Account = (Button) findViewById(R.id.main_menu_account);
+            menu_Survey = (Button) findViewById(R.id.main_menu_survey);
+            menu_Scan = (Button) findViewById(R.id.main_menu_scan);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -142,18 +154,10 @@ public class MainActivity extends AppCompatActivity
 
     //region LOAD FORM
 
-//    // load menu phải (menu)
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
     // Load trang chủ
     public void loadHomeFragment() {
         toolbar.setTitle(getString(R.string.bottom_Information));
-        loadFragment(new A6_Menu_Fragment());
+        //loadFragment(new A6_Menu_Fragment());
     }
 
     // Lấy sđt và password login
@@ -165,21 +169,6 @@ public class MainActivity extends AppCompatActivity
     //endregion
 
     //region SELECT MENNU
-//    // Xử lý click menu bên phải (bottom view)
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     // Xử lý click menu bên trái (navigation view)
     @SuppressWarnings("StatementWithEmptyBody")
@@ -213,7 +202,8 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    // Load menu bên dưới (buttom navigation view)
+    // Load menu bên dưới (bottom navigation view)
+    //region bottom menu
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -226,8 +216,12 @@ public class MainActivity extends AppCompatActivity
                     toolbar.setTitle(getString(R.string.bottom_Information));
 
                     // Gọi màn hình
-                    fragment = new A6_Menu_Fragment();
-                    loadFragment(fragment);
+                    //fragment = new A6_Menu_Fragment();
+                    //loadFragment(fragment);
+
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
 
                     return true;
                 case R.id.bottom_scan:
@@ -253,6 +247,57 @@ public class MainActivity extends AppCompatActivity
             return false;
         }
     };
+    //endregion
+
+    // Xử lý click menu chính
+    public void onClickMenu() {
+        try {
+            // Menu Account
+            menu_Account.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Fragment fragment;
+                        fragment = new A8_SignIn_Fragment();
+                        loadFragment(fragment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            // Menu Customer Survey
+            menu_Survey.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Fragment fragment;
+                        fragment = new A9_Survey_Fragment();
+                        loadFragment(fragment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            // Menu Scan
+            menu_Scan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    try {
+                        Fragment fragment;
+                        fragment = new A3_Scan_Home_Fragment();
+                        loadFragment(fragment);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //endregion
 
     //region XỬ LÝ EVENTS
