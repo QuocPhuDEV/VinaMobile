@@ -28,6 +28,7 @@ public class Create_Table extends SQLiteOpenHelper {
     // Tên bảng
     private static final String TABLE_NAME_ACCOUNT = "TBT_ACCOUNT";
     private static final String TABLE_NAME_ZONE = "TBM_KHUVUC";
+    private static final String TABLE_NAME_QUESTION = "TBM_QUESTION";
 
 
     // các cột
@@ -42,10 +43,15 @@ public class Create_Table extends SQLiteOpenHelper {
     private static final String TBT_ACCOUNT_DIACHI = "DiaChi";
     private static final String TBT_ACCOUNT_HINHANH = "HinhAnh";
 
-    //BẢNG TBT_CITY
+    //BẢNG TBM_KHUVUC
     private static final String TBM_ZONE_KHUVUC = "KhuVuc";
     private static final String TBM_ZONE_TINHTP = "TinhTP";
     private static final String TBM_ZONE_QUANHUYEN = "QuanHuyen";
+
+    //BẢNG TBM_QUESTION
+    private static final String TBM_QUES_ID = "MaCH";
+    private static final String TBM_QUES_NAME = "CauHoi";
+    private static final String TBM_QUES_TYPE = "LoaiCH";
 
     //endregion
 
@@ -57,6 +63,7 @@ public class Create_Table extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         Create_Table_TBT_ACCOUNT(sqLiteDatabase);
         Create_Table_TBM_ZONE(sqLiteDatabase);
+        Create_Table_TBM_QUESTION(sqLiteDatabase);
 
     }
 
@@ -64,6 +71,7 @@ public class Create_Table extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         Drop_Table_TBT_ACCOUNT(sqLiteDatabase);
         Drop_Table_TBM_ZONE(sqLiteDatabase);
+        Drop_Table_TBM_QUESTION(sqLiteDatabase);
     }
 
     //region TẠO BẢNG TRONG DATABASE
@@ -88,14 +96,30 @@ public class Create_Table extends SQLiteOpenHelper {
         }
     }
 
-    // Tạo bảng TBT_CITY
+    // Tạo bảng TBM_ZONE
     public void Create_Table_TBM_ZONE(SQLiteDatabase sqLiteDatabase) {
         try {
             // script tạo bảng
             String script = "CREATE TABLE " + TABLE_NAME_ZONE + " ("
                     + TBM_ZONE_KHUVUC + " VARCHAR(100), "
                     + TBM_ZONE_TINHTP + " VARCHAR(100), "
-                    + TBM_ZONE_QUANHUYEN + " VARCHAR(100) PRIMARY KEY " +" )";
+                    + TBM_ZONE_QUANHUYEN + " VARCHAR(100) PRIMARY KEY " + " )";
+
+            // chạy lệnh tạo bảng
+            sqLiteDatabase.execSQL(script);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Tạo bảng TBM_QUESTION
+    public void Create_Table_TBM_QUESTION(SQLiteDatabase sqLiteDatabase) {
+        try {
+            // script tạo bảng
+            String script = "CREATE TABLE " + TABLE_NAME_QUESTION + " ( "
+                    + TBM_QUES_ID + " VARCHAR(20) PRIMARY KEY , "
+                    + TBM_QUES_NAME + " VARCHAR(200), "
+                    + TBM_QUES_TYPE + " VARCHAR(100) ) ";
 
             // chạy lệnh tạo bảng
             sqLiteDatabase.execSQL(script);
@@ -124,7 +148,7 @@ public class Create_Table extends SQLiteOpenHelper {
         }
     }
 
-    // xóa bảng TBT_CITY nếu tồn tại, tạo lại
+    // xóa bảng TBT_ZONE nếu tồn tại, tạo lại
     public void Drop_Table_TBM_ZONE(SQLiteDatabase sqLiteDatabase) {
 
         try {
@@ -141,11 +165,27 @@ public class Create_Table extends SQLiteOpenHelper {
         }
     }
 
+    // xóa bảng TBM_QUESTION nếu tồn tại, tạo lại
+    public void Drop_Table_TBM_QUESTION(SQLiteDatabase sqLiteDatabase) {
+        try {
+            //script xóa bảng
+            String script = "DROP TABLE IF EXISTS " + TABLE_NAME_QUESTION;
+
+            // Xóa bảng
+            sqLiteDatabase.execSQL(script);
+
+            // tạo lại bảng
+            onCreate(sqLiteDatabase);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //endregion
 
 
     // XỬ LÝ RIÊNG ACCOUNT
-
+    
     //region THÊM DỮ LIỆU MẶC ĐỊNH CHO CÁC BẢNG
 
     // Thêm dữ liệu mặc định cho bảng TBT_ACCOUNT

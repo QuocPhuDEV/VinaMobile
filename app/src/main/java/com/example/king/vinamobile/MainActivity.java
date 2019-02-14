@@ -100,14 +100,13 @@ public class MainActivity extends AppCompatActivity
         readDataFormLogin();
         getAllDataUserLogin();
         onClickMenu();
-
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        this.toolbar.setBackgroundColor(Color.BLUE);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.toolbar.setTitle(getString(R.string.bottom_Information));
+    }
 
     //region ÁNH XẠ ĐỐI TƯỢNG
     public void AddObject() {
@@ -162,9 +161,13 @@ public class MainActivity extends AppCompatActivity
 
     // Lấy sđt và password login
     public void readDataFormLogin() {
-        Intent intent = getIntent();
-        mPhoneNumber = intent.getStringExtra(PHONE);
-        mPassWord = intent.getStringExtra(PASSWORD);
+        try {
+            Intent intent = getIntent();
+            mPhoneNumber = intent.getStringExtra(PHONE);
+            mPassWord = intent.getStringExtra(PASSWORD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //endregion
 
@@ -174,32 +177,37 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        Fragment fragment;
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        try {
+            Fragment fragment;
+            // Handle navigation view item clicks here.
+            int id = item.getItemId();
 
-        if (id == R.id.nav_input) {
+            if (id == R.id.nav_input) {
 
-        } else if (id == R.id.nav_scan) {
+            } else if (id == R.id.nav_scan) {
 
-        } else if (id == R.id.nav_inventory) {
+            } else if (id == R.id.nav_inventory) {
 
-        } else if (id == R.id.nav_report) {
+            } else if (id == R.id.nav_report) {
 
-        } else if (id == R.id.nav_account) {
-            fragment = new A7_Profile_Fragment();
-            Bundle bundle = new Bundle();
-            bundle.putString(PHONE, mPhoneNumber);
-            bundle.putString(PASSWORD, mPassWord);
-            fragment.setArguments(bundle);
-            loadFragment(fragment);
-        } else if (id == R.id.nav_logout) {
-            confirmLogout();
+            } else if (id == R.id.nav_account) {
+                fragment = new A7_Profile_Fragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(PHONE, mPhoneNumber);
+                bundle.putString(PASSWORD, mPassWord);
+                fragment.setArguments(bundle);
+                loadFragment(fragment);
+            } else if (id == R.id.nav_logout) {
+                confirmLogout();
+            }
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     // Load menu bên dưới (bottom navigation view)
@@ -219,9 +227,11 @@ public class MainActivity extends AppCompatActivity
                     //fragment = new A6_Menu_Fragment();
                     //loadFragment(fragment);
 
-                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+//                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+//                    startActivity(intent);
+//                    finish();
+
+                    onBackPressed();
 
                     return true;
                 case R.id.bottom_scan:
@@ -257,9 +267,13 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view) {
                     try {
+                        // Gọi form
                         Fragment fragment;
                         fragment = new A8_SignIn_Fragment();
                         loadFragment(fragment);
+
+                        // Đổi tiêu đề
+                        toolbar.setTitle(getString(R.string.a6_menu_account));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -271,9 +285,13 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view) {
                     try {
+                        // Gọi form
                         Fragment fragment;
                         fragment = new A9_Survey_Fragment();
                         loadFragment(fragment);
+
+                        // Đổi tiêu đề
+                        toolbar.setTitle(getString(R.string.a6_menu_customer_survey));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -285,9 +303,13 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onClick(View view) {
                     try {
+                        // Gọi form
                         Fragment fragment;
                         fragment = new A3_Scan_Home_Fragment();
                         loadFragment(fragment);
+
+                        // Đổi tiêu đề
+                        toolbar.setTitle(getString(R.string.bottom_Scan));
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -305,20 +327,28 @@ public class MainActivity extends AppCompatActivity
     // Xử lý sự kiện onBackPressed
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        try {
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+                super.onBackPressed();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     // Load Fragment
     private void loadFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        try {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // Get thông tin user logion

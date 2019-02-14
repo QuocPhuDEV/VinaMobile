@@ -149,7 +149,6 @@ public class A1_Login_Activity extends AppCompatActivity {
                     intent.putExtra(PASSWORD, pass);
                     startActivity(intent);
                     finish();
-                    //Toast.makeText(this, "go", Toast.LENGTH_SHORT).show();
                 } else {
                     edPassword.setError(getString(R.string.a1_error_wrong_pass));
                 }
