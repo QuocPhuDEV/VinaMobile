@@ -85,7 +85,7 @@ public class A9_Question_Type_Adapter extends BaseAdapter {
 
             A9_DBHelper dbHelper = new A9_DBHelper(context);
             int countType = dbHelper.getCountQuesType(type);
-            viewHolder.tvQuesCount.setText("0/"+countType);
+            viewHolder.tvQuesCount.setText("0/" + countType);
 
             return view;
 
