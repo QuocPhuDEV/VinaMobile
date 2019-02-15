@@ -5,7 +5,7 @@
 
     <!-- Set màu nền #EEEEEE-->
     <solid
-        android:color="@color/light_blue" >
+        android:color="@color/white" >
     </solid>
 
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->

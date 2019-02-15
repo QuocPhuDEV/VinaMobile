@@ -80,5 +80,4 @@
         app:layout_constraintStart_toEndOf="@+id/a9_btn_change"
         app:layout_constraintTop_toBottomOf="@+id/a9_btn_his" />
 
-
 </android.support.constraint.ConstraintLayout>

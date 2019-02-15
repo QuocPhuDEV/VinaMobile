@@ -39,10 +39,8 @@ public class A9_Survey_Fragment extends Fragment {
             // Ánh xạ đối tượng
             menu_Survey = (Button) view.findViewById(R.id.a9_btn_survey);
 
-
             // Gọi sự kiện
             onClickMenu();
-
 
             return view;
         } catch (Exception e) {

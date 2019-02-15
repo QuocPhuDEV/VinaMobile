@@ -84,6 +84,7 @@
     <color name="greenYellow">#ADFF2F</color>
     <color name="light_blue">#ADD8E6</color>
     <color name="dark_gray">#A9A9A9</color>
+    <color name="light_gray">#FAF6F6</color>
     <color name="brown">#a52a2a</color>
     <color name="sienna">#A0522D</color>
     <color name="yellow_green">#9ACD32</color>
@@ -147,4 +148,5 @@
     <color name="dark_blue">#00008B</color>
     <color name="navy">#000080</color>
     <color name="black">#000000</color>
+    <color name="light_black">#353333</color>
 </resources>
