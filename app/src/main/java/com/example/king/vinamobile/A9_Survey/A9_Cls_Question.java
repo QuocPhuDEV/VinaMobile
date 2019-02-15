@@ -40,10 +40,6 @@ public class A9_Cls_Question implements Serializable {
 
     @Override
     public String toString() {
-        return "A9_Cls_Question{" +
-                "MaCH='" + MaCH + '\'' +
-                ", CauHoi='" + CauHoi + '\'' +
-                ", LoaiCH='" + LoaiCH + '\'' +
-                '}';
+        return LoaiCH;
     }
 }

@@ -103,6 +103,7 @@
     <string name="a9_btn_menu_vote_survey"> Đánh giá </string>
     <!--A9 NEW SURVEY-->
     <string name="a9_title_question_type"> Chọn loại câu hỏi thực hiện khảo sát</string>
+    <string name="a9_title_answer_question">Trả lời những câu hỏi sau</string>
     <string name="a9_title_img_ques_type"> Hình ảnh loại câu hỏi</string>
     <string name="a9_ques_type_choice">Trắc Nghiệm</string>
     <string name="a9_ques_type_answer">Tự Luận</string>

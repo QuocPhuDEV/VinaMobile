@@ -99,7 +99,7 @@
                     android:paddingLeft="10dp"
                     android:text="123"
                     android:textColor="#0033FF"
-                    android:textColorHint="@color/dodger_blue" />
+                    android:textColorHint="@color/gray" />
             </LinearLayout>
 
 

@@ -3,11 +3,16 @@ package com.example.king.vinamobile.A9_Survey;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.king.vinamobile.A8_SignIn.A8_SignIn_Fragment;
 import com.example.king.vinamobile.R;
 
 import java.util.ArrayList;
@@ -51,6 +56,7 @@ public class A9_Question_Type_Fragment extends Fragment {
     //region FORM LOAD
     public void formLoad() {
         loadListView();
+        onSelectItemQuestionType();
     }
     //endregion
 
@@ -58,6 +64,9 @@ public class A9_Question_Type_Fragment extends Fragment {
     // load danh sách loại câu hỏi
     public void loadListView() {
         try {
+            // Xóa dữ liệu cũ trên lưới
+            this.typeList.clear();
+
             // Khởi tạo đối tượng SQlite
             A9_DBHelper dbHelper = new A9_DBHelper(getContext());
             dbHelper.createDefaultData();
@@ -78,6 +87,38 @@ public class A9_Question_Type_Fragment extends Fragment {
             e.printStackTrace();
         }
 
+    }
+
+    // xử lý click chọn loại câu hỏi
+    public void onSelectItemQuestionType() {
+        try {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String type = typeList.get(i).toString();
+                    if (type.equals(getString(R.string.a9_ques_type_choice))) {
+                        A9_YesNo_Fragment king = new A9_YesNo_Fragment();
+                        loadFragment(king);
+                        //Toast.makeText(getContext(), type, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Load Fragment
+    private void loadFragment(Fragment fragment) {
+        try {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //endregion
 
