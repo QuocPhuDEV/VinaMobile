@@ -99,6 +99,8 @@ public class A9_DBHelper extends SQLiteOpenHelper {
                 A9_Cls_Question question3 = new A9_Cls_Question("CH03", "Bạn đã sử dụng sản phẩm của công ty chúng tôi trong bao lâu ?", "Tự Luận");
                 A9_Cls_Question question4 = new A9_Cls_Question("CH04", "Hãy đánh giá mức độ hài lòng của bạn đối với sản phẩm công ty chúng tôi ?", "Đánh Giá");
                 A9_Cls_Question question5 = new A9_Cls_Question("CH05", "Bạn sẽ tiếp tục ủng hộ sản phẩm của công ty chúng tôi chứ ?", "Đánh Giá");
+                A9_Cls_Question question6 = new A9_Cls_Question("CH06", "Bạn sẽ vẫn tiếp tục ủng hộ dòng sản phẩm này chứ ?", "Trắc Nghiệm");
+                A9_Cls_Question question7 = new A9_Cls_Question("CH07", "Bạn sẽ giới thiệu cho người khác về sản phẩm này ?", "Trắc Nghiệm");
 
                 // thêm câu hỏi vào database
                 this.addValueQuestion(question1);
@@ -106,6 +108,8 @@ public class A9_DBHelper extends SQLiteOpenHelper {
                 this.addValueQuestion(question3);
                 this.addValueQuestion(question4);
                 this.addValueQuestion(question5);
+                this.addValueQuestion(question6);
+                this.addValueQuestion(question7);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,6 +139,40 @@ public class A9_DBHelper extends SQLiteOpenHelper {
                     clsQues.setMaCH("");
                     clsQues.setCauHoi("");
                     clsQues.setLoaiCH(cursor.getString(0));
+
+                    // thêm dữ liệu vào list
+                    typeList.add(clsQues);
+
+                } while (cursor.moveToNext());
+            }
+
+            return typeList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Search câu hỏi
+    public List<A9_Cls_Question> getAllQuestion(String quesType) {
+        try {
+            List<A9_Cls_Question> typeList = new ArrayList<A9_Cls_Question>();
+
+            // Script query search
+            String script = "SELECT " + TBM_QUES_NAME + " FROM " + TABLE_NAME_QUESTION
+                    + " WHERE " + TBM_QUES_TYPE + " = '" + quesType + "'";
+
+            // khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.rawQuery(script, null);
+
+            // Duyệt danh sách search
+            if (cursor.moveToFirst()) {
+                do {
+                    A9_Cls_Question clsQues = new A9_Cls_Question();
+                    clsQues.setMaCH("");
+                    clsQues.setCauHoi(cursor.getString(0));
+                    clsQues.setLoaiCH("");
 
                     // thêm dữ liệu vào list
                     typeList.add(clsQues);

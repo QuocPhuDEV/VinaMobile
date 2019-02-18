@@ -40,6 +40,6 @@ public class A9_Cls_Question implements Serializable {
 
     @Override
     public String toString() {
-        return LoaiCH;
+        return CauHoi + LoaiCH;
     }
 }

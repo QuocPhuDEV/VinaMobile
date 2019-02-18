@@ -97,9 +97,8 @@ public class A9_Question_Type_Fragment extends Fragment {
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     String type = typeList.get(i).toString();
                     if (type.equals(getString(R.string.a9_ques_type_choice))) {
-                        A9_YesNo_Fragment king = new A9_YesNo_Fragment();
-                        loadFragment(king);
-                        //Toast.makeText(getContext(), type, Toast.LENGTH_SHORT).show();
+                        A9_YesNo_Fragment yesNo_fragment = new A9_YesNo_Fragment();
+                        loadFragment(yesNo_fragment);
                     }
                 }
             });
