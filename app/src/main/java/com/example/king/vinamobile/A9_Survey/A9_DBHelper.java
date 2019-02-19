@@ -218,6 +218,40 @@ public class A9_DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Search câu hỏi
+    public String getAllQuestionID(String question) {
+        try {
+            String QuesID = "";
+
+            // Script query search
+            String script = "SELECT " + TBM_QUES_ID + " FROM " + TABLE_NAME_QUESTION
+                    + " WHERE " + TBM_QUES_NAME + " = '" + question + "'";
+
+            // khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.rawQuery(script, null);
+
+            // Duyệt danh sách search
+            if (cursor.moveToFirst()) {
+                do {
+                    A9_Cls_Question clsQues = new A9_Cls_Question();
+                    clsQues.setMaCH(cursor.getString(0));
+                    clsQues.setCauHoi("");
+                    clsQues.setLoaiCH("");
+
+                    // thêm dữ liệu vào list
+                    QuesID = clsQues.getMaCH();
+
+                } while (cursor.moveToNext());
+            }
+
+            return QuesID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     // Đếm loại câu hỏi
     public int getCountQuesType(String type) {
         try {

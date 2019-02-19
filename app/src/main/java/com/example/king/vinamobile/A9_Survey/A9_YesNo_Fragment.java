@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
 import com.example.king.vinamobile.R;
 
 import java.util.ArrayList;
@@ -31,6 +33,9 @@ public class A9_YesNo_Fragment extends Fragment {
     private ListView listView;
     private A9_YesNo_Adapter adapter;
     private final List<A9_Cls_Question> quesList = new ArrayList<A9_Cls_Question>();
+
+    // biến nhận giá trị câu hỏi và trả lời
+    public String MaCH, CauHoi;
     //endregion
 
 
@@ -99,7 +104,13 @@ public class A9_YesNo_Fragment extends Fragment {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    confirmAnswer();
+                    //confirmAnswer();
+                    // lấy câu hỏi đã chọn
+                    CauHoi = quesList.get(i).toString();
+                    // lấy mã câu hỏi đã chọn
+                    A9_DBHelper dbHelper = new A9_DBHelper(getContext());
+                    MaCH = dbHelper.getAllQuestionID(CauHoi);
+
                 }
             });
         } catch (Exception e) {
@@ -119,8 +130,11 @@ public class A9_YesNo_Fragment extends Fragment {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     switch (i) {
                         case DialogInterface.BUTTON_POSITIVE:
+                            // có
+
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:
+                            // không
                             break;
                         case DialogInterface.BUTTON_NEUTRAL:
                             break;
@@ -137,6 +151,17 @@ public class A9_YesNo_Fragment extends Fragment {
             e.printStackTrace();
         }
 
+    }
+
+    // Thêm dữ liệu vào bảng trả lời câu hỏi
+    public void addAnswer(String maCH, String traLoi, String time, String sdt) {
+        try {
+            A9_Cls_Answer a9ClsAnswer = new A9_Cls_Answer(maCH, traLoi, time, sdt);
+            A9_DBHelper dbHelper = new A9_DBHelper(getContext());
+            dbHelper.addValueAnswer(a9ClsAnswer);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //endregion
