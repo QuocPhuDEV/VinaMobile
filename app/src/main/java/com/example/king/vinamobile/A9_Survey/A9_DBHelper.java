@@ -22,12 +22,19 @@ public class A9_DBHelper extends SQLiteOpenHelper {
 
     // Tên bảng
     private static final String TABLE_NAME_QUESTION = "TBM_QUESTION";
+    private static final String TABLE_NAME_ANSWER = "TBT_ANSWER";
 
     // các cột
-    //BẢNG TBT_CITY
+    //BẢNG TBM_QUESTION
     private static final String TBM_QUES_ID = "MaCH";
     private static final String TBM_QUES_NAME = "CauHoi";
     private static final String TBM_QUES_TYPE = "LoaiCH";
+
+    //BẢNG TBT_ANSWER
+    private static final String TBM_ANSWER_MACH = "MaCH";
+    private static final String TBM_ANSWER_ANSWER = "TraLoi";
+    private static final String TBM_ANSWER_TIME = "ThoiGian";
+    private static final String TBM_ANSWER_SDT = "SDT";
 
     //endregion
 
@@ -47,7 +54,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
 
     //region THÊM DỮ LIỆU MẶC ĐỊNH CHO BẢNG
 
-    // function thêm dữ liệu
+    // function thêm dữ liệu cho bảng TBM_QUESTION
     public void addValueQuestion(A9_Cls_Question ClsQuestion) {
         try {
             // Khởi tạo đối tượng SQLite
@@ -61,6 +68,30 @@ public class A9_DBHelper extends SQLiteOpenHelper {
 
             // Thêm dữ liệu
             database.insert(TABLE_NAME_QUESTION, null, values);
+
+            // Đóng kết nối
+            database.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    // function thêm dữ liệu cho bảng TBT_ANSWER
+    public void addValueAnswer(A9_Cls_Answer ClsAnswer) {
+        try {
+            // Khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+
+            // Khởi tạo đối tượng ContentValues ( dùng để lưu dữ liệu)
+            ContentValues values = new ContentValues();
+            values.put(TBM_ANSWER_MACH, ClsAnswer.getMaCH());
+            values.put(TBM_ANSWER_ANSWER, ClsAnswer.getTraLoi());
+            values.put(TBM_ANSWER_TIME, ClsAnswer.getThoiGian());
+            values.put(TBM_ANSWER_SDT, ClsAnswer.getSDT());
+
+            // Thêm dữ liệu
+            database.insert(TABLE_NAME_ANSWER, null, values);
 
             // Đóng kết nối
             database.close();
@@ -94,7 +125,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
         try {
             int count = this.getCountRecord();
             if (count == 0) {
-                A9_Cls_Question question1 = new A9_Cls_Question("CH01", "Bạn biết đến công ty chúng tôi qua hình thức nào ?", "Trắc Nghiệm");
+                A9_Cls_Question question1 = new A9_Cls_Question("CH01", "Bạn có ý định mua thêm sản phẩm của chúng tôi ?", "Trắc Nghiệm");
                 A9_Cls_Question question2 = new A9_Cls_Question("CH02", "Những yêu cầu bạn muốn chúng tôi thay đổi để phục vụ tốt hơn ?", "Tự Luận");
                 A9_Cls_Question question3 = new A9_Cls_Question("CH03", "Bạn đã sử dụng sản phẩm của công ty chúng tôi trong bao lâu ?", "Tự Luận");
                 A9_Cls_Question question4 = new A9_Cls_Question("CH04", "Hãy đánh giá mức độ hài lòng của bạn đối với sản phẩm công ty chúng tôi ?", "Đánh Giá");

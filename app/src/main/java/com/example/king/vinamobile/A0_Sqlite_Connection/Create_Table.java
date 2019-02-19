@@ -29,6 +29,7 @@ public class Create_Table extends SQLiteOpenHelper {
     private static final String TABLE_NAME_ACCOUNT = "TBT_ACCOUNT";
     private static final String TABLE_NAME_ZONE = "TBM_KHUVUC";
     private static final String TABLE_NAME_QUESTION = "TBM_QUESTION";
+    private static final String TABLE_NAME_ANSWER = "TBT_ANSWER";
 
 
     // các cột
@@ -53,6 +54,12 @@ public class Create_Table extends SQLiteOpenHelper {
     private static final String TBM_QUES_NAME = "CauHoi";
     private static final String TBM_QUES_TYPE = "LoaiCH";
 
+    //BẢNG TBT_ANSWER
+    private static final String TBM_ANSWER_MACH = "MaCH";
+    private static final String TBM_ANSWER_ANSWER = "TraLoi";
+    private static final String TBM_ANSWER_TIME = "ThoiGian";
+    private static final String TBM_ANSWER_SDT = "SDT";
+
     //endregion
 
     public Create_Table(Context context) {
@@ -64,6 +71,7 @@ public class Create_Table extends SQLiteOpenHelper {
         Create_Table_TBT_ACCOUNT(sqLiteDatabase);
         Create_Table_TBM_ZONE(sqLiteDatabase);
         Create_Table_TBM_QUESTION(sqLiteDatabase);
+        Create_Table_TBT_ANSWER(sqLiteDatabase);
 
     }
 
@@ -72,6 +80,7 @@ public class Create_Table extends SQLiteOpenHelper {
         Drop_Table_TBT_ACCOUNT(sqLiteDatabase);
         Drop_Table_TBM_ZONE(sqLiteDatabase);
         Drop_Table_TBM_QUESTION(sqLiteDatabase);
+        Drop_Table_TBT_ANSWER(sqLiteDatabase);
     }
 
     //region TẠO BẢNG TRONG DATABASE
@@ -120,6 +129,23 @@ public class Create_Table extends SQLiteOpenHelper {
                     + TBM_QUES_ID + " VARCHAR(20) PRIMARY KEY , "
                     + TBM_QUES_NAME + " VARCHAR(200), "
                     + TBM_QUES_TYPE + " VARCHAR(100) ) ";
+
+            // chạy lệnh tạo bảng
+            sqLiteDatabase.execSQL(script);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Tạo bảng TBT_ANSWER
+    public void Create_Table_TBT_ANSWER(SQLiteDatabase sqLiteDatabase) {
+        try {
+            // script tạo bảng
+            String script = "CREATE TABLE " + TABLE_NAME_ANSWER + " ( "
+                    + TBM_ANSWER_MACH + " VARCHAR(20) PRIMARY KEY , "
+                    + TBM_ANSWER_ANSWER + " VARCHAR(200), "
+                    + TBM_ANSWER_TIME + " DATETIME, "
+                    + TBM_ANSWER_SDT + " VARCHAR(20) ) ";
 
             // chạy lệnh tạo bảng
             sqLiteDatabase.execSQL(script);
@@ -181,11 +207,27 @@ public class Create_Table extends SQLiteOpenHelper {
         }
     }
 
+    // xóa bảng TBT_ANSWER nếu tồn tại, tạo lại
+    public void Drop_Table_TBT_ANSWER(SQLiteDatabase sqLiteDatabase) {
+        try {
+            //script xóa bảng
+            String script = "DROP TABLE IF EXISTS " + TABLE_NAME_ANSWER;
+
+            // Xóa bảng
+            sqLiteDatabase.execSQL(script);
+
+            // tạo lại bảng
+            onCreate(sqLiteDatabase);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     //endregion
 
 
     // XỬ LÝ RIÊNG ACCOUNT
-    
+
     //region THÊM DỮ LIỆU MẶC ĐỊNH CHO CÁC BẢNG
 
     // Thêm dữ liệu mặc định cho bảng TBT_ACCOUNT

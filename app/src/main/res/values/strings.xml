@@ -109,6 +109,9 @@
     <string name="a9_ques_type_answer">Tự Luận</string>
     <string name="a9_ques_type_rating">Đánh Giá</string>
 
+    <!--A9 YES NO ANSWER -->
+    <string name="a9_ys_answer_cancel">Hủy</string>
+
     <!--A8 SIGN IN-->
     <string name="a8_full_name">Họ và tên</string>
     <string name="a8_phone_number">Số điện thoại</string>

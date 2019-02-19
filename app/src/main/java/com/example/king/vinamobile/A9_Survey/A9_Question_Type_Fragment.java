@@ -99,6 +99,10 @@ public class A9_Question_Type_Fragment extends Fragment {
                     if (type.equals(getString(R.string.a9_ques_type_choice))) {
                         A9_YesNo_Fragment yesNo_fragment = new A9_YesNo_Fragment();
                         loadFragment(yesNo_fragment);
+                    } else if (type.equals(getString(R.string.a9_ques_type_answer))) {
+
+                    } else if (type.equals(getString(R.string.a9_ques_type_rating))) {
+
                     }
                 }
             });

@@ -1,10 +1,13 @@
 package com.example.king.vinamobile.A9_Survey;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +60,7 @@ public class A9_YesNo_Fragment extends Fragment {
     //region FORM LOAD
     public void formLoad() {
         loadListView();
+        onSelectItemQuestions();
     }
     //endregion
 
@@ -89,7 +93,51 @@ public class A9_YesNo_Fragment extends Fragment {
 
     }
 
-    // xử lý click chọn loại câu hỏi
+    // xử lý click trả lời câu hỏi
+    public void onSelectItemQuestions() {
+        try {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    confirmAnswer();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // xác nhận câu trả lời
+    public void confirmAnswer() {
+        try {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+            dialog.setTitle(getString(R.string.main_confirm_logout_title_alert));
+            //dialog.setMessage(getString(R.string.main_confirm_logout_message_alert));
+
+            DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    switch (i) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            break;
+                        case DialogInterface.BUTTON_NEUTRAL:
+                            break;
+                    }
+                }
+            };
+
+            dialog.setPositiveButton(getString(R.string.main_confirm_logout_button_ok_alert), clickListener);
+            dialog.setNegativeButton(getString(R.string.main_confirm_logout_button_cancel_alert), clickListener);
+            dialog.setNeutralButton(getString(R.string.a9_ys_answer_cancel), clickListener);
+            dialog.setIcon(R.drawable.main_user_confirm);
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     //endregion
 
