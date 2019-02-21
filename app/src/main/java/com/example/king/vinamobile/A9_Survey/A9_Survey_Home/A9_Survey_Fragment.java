@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.king.vinamobile.A9_Survey.A9_Survey.A9_Question_Type_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_History.A9_History_Fragment;
 import com.example.king.vinamobile.R;
 
 /**
@@ -39,6 +40,7 @@ public class A9_Survey_Fragment extends Fragment {
 
             // Ánh xạ đối tượng
             menu_Survey = (Button) view.findViewById(R.id.a9_btn_survey);
+            menu_History = (Button) view.findViewById(R.id.a9_btn_his);
 
             // Gọi sự kiện
             onClickMenu();
@@ -51,7 +53,7 @@ public class A9_Survey_Fragment extends Fragment {
     }
 
     //region XỬ LÝ SỰ KIỆN TRÊN FORM
-    // xử lý click menu
+    //xử lý click menu
     public void onClickMenu() {
         try {
             // Menu Survey
@@ -60,6 +62,15 @@ public class A9_Survey_Fragment extends Fragment {
                 public void onClick(View view) {
                     A9_Question_Type_Fragment question_type_fragment = new A9_Question_Type_Fragment();
                     loadFragment(question_type_fragment);
+                }
+            });
+
+            // Menu History
+            menu_History.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    A9_History_Fragment a9_history_fragment = new A9_History_Fragment();
+                    loadFragment(a9_history_fragment);
                 }
             });
         } catch (Exception e) {
