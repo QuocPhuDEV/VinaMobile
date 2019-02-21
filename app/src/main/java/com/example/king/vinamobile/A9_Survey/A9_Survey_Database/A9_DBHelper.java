@@ -1,12 +1,13 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey_Database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
-import android.widget.ListView;
+
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Answer;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Question;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
     public void addValueAnswer(A9_Cls_Answer ClsAnswer) {
         try {
             // nếu đã trả lời, update câu trả lời
-            if (getCountAnswer(ClsAnswer.MaCH) >= 1) {
+            if (getCountAnswer(ClsAnswer.getMaCH()) >= 1) {
                 UpdateValueAnswer(ClsAnswer);
             } else {
                 // Khởi tạo đối tượng SQLite

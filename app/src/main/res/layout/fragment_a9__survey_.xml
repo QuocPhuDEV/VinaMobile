@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".A9_Survey.A9_Survey_Fragment">
+    tools:context=".A9_Survey.A9_Survey_Home.A9_Survey_Fragment">
 
     <Button
         android:id="@+id/a9_btn_survey"

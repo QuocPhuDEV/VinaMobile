@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.example.king.vinamobile.A3_Scan.A3_Scan_Fragment;
-import com.example.king.vinamobile.A7_Profile.A7_Profile_Fragment;
 import com.example.king.vinamobile.A8_SignIn.A8_SignIn_Fragment;
-import com.example.king.vinamobile.A9_Survey.A9_Survey_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Home.A9_Survey_Fragment;
 import com.example.king.vinamobile.R;
 
 /**

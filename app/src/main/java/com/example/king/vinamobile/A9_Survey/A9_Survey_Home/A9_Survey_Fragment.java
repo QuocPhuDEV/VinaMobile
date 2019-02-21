@@ -1,4 +1,4 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey_Home;
 
 
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.king.vinamobile.A9_Survey.A9_Survey.A9_Question_Type_Fragment;
 import com.example.king.vinamobile.R;
 
 /**

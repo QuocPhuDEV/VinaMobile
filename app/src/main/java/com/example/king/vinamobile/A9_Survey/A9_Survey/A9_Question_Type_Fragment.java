@@ -1,4 +1,4 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey;
 
 
 import android.os.Bundle;
@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.king.vinamobile.A8_SignIn.A8_SignIn_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Question;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Database.A9_DBHelper;
 import com.example.king.vinamobile.R;
 
 import java.util.ArrayList;

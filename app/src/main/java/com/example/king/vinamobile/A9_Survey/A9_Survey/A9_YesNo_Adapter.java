@@ -1,13 +1,13 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Question;
 import com.example.king.vinamobile.R;
 
 import java.util.List;

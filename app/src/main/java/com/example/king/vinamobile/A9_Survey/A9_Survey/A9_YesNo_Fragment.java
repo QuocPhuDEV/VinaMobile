@@ -1,19 +1,15 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey;
 
 
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -21,15 +17,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Answer;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Question;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_Database.A9_DBHelper;
 import com.example.king.vinamobile.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 /**

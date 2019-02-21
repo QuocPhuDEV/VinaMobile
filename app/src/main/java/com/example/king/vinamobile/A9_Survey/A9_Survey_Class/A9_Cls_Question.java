@@ -1,4 +1,4 @@
-package com.example.king.vinamobile.A9_Survey;
+package com.example.king.vinamobile.A9_Survey.A9_Survey_Class;
 
 import java.io.Serializable;
 
