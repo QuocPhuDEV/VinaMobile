@@ -54,7 +54,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
 
     //region THÊM DỮ LIỆU MẶC ĐỊNH CHO BẢNG
 
-    // function thêm dữ liệu cho bảng TBM_QUESTION
+    //function thêm dữ liệu cho bảng TBM_QUESTION
     public void addValueQuestion(A9_Cls_Question ClsQuestion) {
         try {
             // Khởi tạo đối tượng SQLite
@@ -77,8 +77,37 @@ public class A9_DBHelper extends SQLiteOpenHelper {
 
     }
 
-    // function thêm dữ liệu cho bảng TBT_ANSWER
+    //function thêm dữ liệu cho bảng TBT_ANSWER
     public void addValueAnswer(A9_Cls_Answer ClsAnswer) {
+        try {
+            // nếu đã trả lời, update câu trả lời
+            if (getCountAnswer(ClsAnswer.MaCH) >= 1) {
+                UpdateValueAnswer(ClsAnswer);
+            } else {
+                // Khởi tạo đối tượng SQLite
+                SQLiteDatabase database = this.getWritableDatabase();
+
+                // Khởi tạo đối tượng ContentValues ( dùng để lưu dữ liệu)
+                ContentValues values = new ContentValues();
+                values.put(TBM_ANSWER_MACH, ClsAnswer.getMaCH());
+                values.put(TBM_ANSWER_ANSWER, ClsAnswer.getTraLoi());
+                values.put(TBM_ANSWER_TIME, ClsAnswer.getThoiGian());
+                values.put(TBM_ANSWER_SDT, ClsAnswer.getSDT());
+
+                // Thêm dữ liệu
+                database.insert(TABLE_NAME_ANSWER, null, values);
+
+                // Đóng kết nối
+                database.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    //function update dữ liệu answer
+    public void UpdateValueAnswer(A9_Cls_Answer ClsAnswer) {
         try {
             // Khởi tạo đối tượng SQLite
             SQLiteDatabase database = this.getWritableDatabase();
@@ -91,7 +120,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
             values.put(TBM_ANSWER_SDT, ClsAnswer.getSDT());
 
             // Thêm dữ liệu
-            database.insert(TABLE_NAME_ANSWER, null, values);
+            database.update(TABLE_NAME_ANSWER, values, TBM_ANSWER_MACH, null);
 
             // Đóng kết nối
             database.close();
@@ -105,6 +134,26 @@ public class A9_DBHelper extends SQLiteOpenHelper {
     public int getCountRecord() {
         try {
             String countQuery = "SELECT * FROM " + TABLE_NAME_QUESTION;
+            SQLiteDatabase database = this.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery(countQuery, null);
+
+            int count = cursor.getCount();
+
+            cursor.close();
+
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    //function kiểm tra câu hỏi đã trả lời chưa ?
+    public int getCountAnswer(String MaCH) {
+        try {
+            String countQuery = "SELECT * FROM " + TABLE_NAME_ANSWER
+                    + " WHERE " + TBM_ANSWER_MACH + " = '" + MaCH + "'";
             SQLiteDatabase database = this.getReadableDatabase();
 
             Cursor cursor = database.rawQuery(countQuery, null);
@@ -246,6 +295,39 @@ public class A9_DBHelper extends SQLiteOpenHelper {
             }
 
             return QuesID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Search toàn bộ câu trả lời
+    public List<A9_Cls_Answer> getAllAnswer() {
+        try {
+            List<A9_Cls_Answer> answerList = new ArrayList<A9_Cls_Answer>();
+
+            // Script query search
+            String script = "SELECT * FROM " + TABLE_NAME_ANSWER;
+
+            // khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.rawQuery(script, null);
+
+            // Duyệt danh sách search
+            if (cursor.moveToFirst()) {
+                do {
+                    A9_Cls_Answer clsAnswer = new A9_Cls_Answer();
+                    clsAnswer.setMaCH(cursor.getString(0));
+                    clsAnswer.setTraLoi(cursor.getString(1));
+                    clsAnswer.setThoiGian(cursor.getString(2));
+                    clsAnswer.setSDT(cursor.getString(3));
+
+                    // thêm dữ liệu vào list
+                    answerList.add(clsAnswer);
+
+                } while (cursor.moveToNext());
+            }
+            return answerList;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

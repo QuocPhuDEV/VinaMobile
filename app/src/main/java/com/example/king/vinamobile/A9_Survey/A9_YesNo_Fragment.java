@@ -1,13 +1,21 @@
 package com.example.king.vinamobile.A9_Survey;
 
 
+import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +26,10 @@ import android.widget.Toast;
 import com.example.king.vinamobile.A1_Login.A1_Cls_Account;
 import com.example.king.vinamobile.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -104,12 +115,20 @@ public class A9_YesNo_Fragment extends Fragment {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    //confirmAnswer();
                     // lấy câu hỏi đã chọn
                     CauHoi = quesList.get(i).toString();
                     // lấy mã câu hỏi đã chọn
                     A9_DBHelper dbHelper = new A9_DBHelper(getContext());
                     MaCH = dbHelper.getAllQuestionID(CauHoi);
+
+                    // xác nhận trả lời câu hỏi
+                    confirmAnswer();
+
+                    // đổi màu sau khi trả lời xong
+//                    if (changeColor) {
+//                        view.setBackgroundColor(getResources().getColor(R.color.blue));
+//                    }
+
 
                 }
             });
@@ -118,7 +137,7 @@ public class A9_YesNo_Fragment extends Fragment {
         }
     }
 
-    // xác nhận câu trả lời
+    // Xác nhận câu trả lời
     public void confirmAnswer() {
         try {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
@@ -126,15 +145,25 @@ public class A9_YesNo_Fragment extends Fragment {
             //dialog.setMessage(getString(R.string.main_confirm_logout_message_alert));
 
             DialogInterface.OnClickListener clickListener = new DialogInterface.OnClickListener() {
+
+                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    String traLoi, time, sdt;
                     switch (i) {
                         case DialogInterface.BUTTON_POSITIVE:
-                            // có
-
+                            // trả lời có
+                            traLoi = getString(R.string.main_confirm_logout_button_ok_alert);
+                            time = getCurrentDateTime();
+                            sdt = getPhoneNumber();
+                            addAnswer(MaCH, traLoi, time, sdt);
                             break;
                         case DialogInterface.BUTTON_NEGATIVE:
-                            // không
+                            // trả lời không
+                            traLoi = getString(R.string.main_confirm_logout_button_cancel_alert);
+                            time = getCurrentDateTime();
+                            sdt = getPhoneNumber();
+                            addAnswer(MaCH, traLoi, time, sdt);
                             break;
                         case DialogInterface.BUTTON_NEUTRAL:
                             break;
@@ -162,6 +191,61 @@ public class A9_YesNo_Fragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // Lấy ngày tháng giờ phút hiện tại
+    public String getCurrentDateTime() {
+        try {
+            String currentDateTime;
+            Calendar c = Calendar.getInstance();
+            SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            currentDateTime = dateformat.format(c.getTime());
+            return currentDateTime;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Lấy số điện thoại
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public String getPhoneNumber() {
+        try {
+            String phoneNumber;
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED
+                    && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                return null;
+            }
+
+            // Nếu đã được cấp quyền truy cập, lấy sdt, gán lên editText
+            TelephonyManager manager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+            String mPhoneNumber = manager.getLine1Number();
+            phoneNumber = changeFormatPhoneNumber(mPhoneNumber);
+
+            return phoneNumber;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Xử lý format số điện thoại
+    public String changeFormatPhoneNumber(String phoneNumber) {
+        String mPhoneNumber = "";
+        try {
+            if (phoneNumber.indexOf("+") != -1) {
+                mPhoneNumber = phoneNumber.replace("+84", "0");
+            } else {
+                mPhoneNumber = phoneNumber;
+            }
+            return mPhoneNumber;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     //endregion
