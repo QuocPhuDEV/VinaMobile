@@ -112,6 +112,9 @@
     <!--A9 YES NO ANSWER -->
     <string name="a9_ys_answer_cancel">Hủy</string>
 
+    <!--A9 SURVEY HISTORY -->
+    <string name="a9_title_answer_history">Câu hỏi đã khảo sát</string>
+
     <!--A8 SIGN IN-->
     <string name="a8_full_name">Họ và tên</string>
     <string name="a8_phone_number">Số điện thoại</string>

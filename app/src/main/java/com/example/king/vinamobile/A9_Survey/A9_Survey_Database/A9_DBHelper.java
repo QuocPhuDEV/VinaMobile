@@ -120,8 +120,11 @@ public class A9_DBHelper extends SQLiteOpenHelper {
             values.put(TBM_ANSWER_TIME, ClsAnswer.getThoiGian());
             values.put(TBM_ANSWER_SDT, ClsAnswer.getSDT());
 
+            String where = TBM_ANSWER_MACH + "=?";
+            String[] whereArgs = new String[]{String.valueOf(ClsAnswer.getMaCH())};
+
             // Thêm dữ liệu
-            database.update(TABLE_NAME_ANSWER, values, TBM_ANSWER_MACH, null);
+            database.update(TABLE_NAME_ANSWER, values, where, whereArgs);
 
             // Đóng kết nối
             database.close();
@@ -268,7 +271,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Search câu hỏi
+    // Search ID câu hỏi
     public String getAllQuestionID(String question) {
         try {
             String QuesID = "";
@@ -287,6 +290,40 @@ public class A9_DBHelper extends SQLiteOpenHelper {
                     A9_Cls_Question clsQues = new A9_Cls_Question();
                     clsQues.setMaCH(cursor.getString(0));
                     clsQues.setCauHoi("");
+                    clsQues.setLoaiCH("");
+
+                    // thêm dữ liệu vào list
+                    QuesID = clsQues.getMaCH();
+
+                } while (cursor.moveToNext());
+            }
+
+            return QuesID;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    // Search câu hỏi theo ID
+    public String getAllQuestionWithID(String MaCH) {
+        try {
+            String QuesID = "";
+
+            // Script query search
+            String script = "SELECT " + TBM_QUES_NAME  + " FROM " + TABLE_NAME_QUESTION
+                    + " WHERE " + TBM_QUES_ID + " = '" + MaCH + "'";
+
+            // khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+            Cursor cursor = database.rawQuery(script, null);
+
+            // Duyệt danh sách search
+            if (cursor.moveToFirst()) {
+                do {
+                    A9_Cls_Question clsQues = new A9_Cls_Question();
+                    clsQues.setMaCH("");
+                    clsQues.setCauHoi(cursor.getString(0));
                     clsQues.setLoaiCH("");
 
                     // thêm dữ liệu vào list
