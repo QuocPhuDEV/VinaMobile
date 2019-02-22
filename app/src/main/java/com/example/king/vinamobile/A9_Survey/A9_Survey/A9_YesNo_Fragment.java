@@ -7,12 +7,18 @@ import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -50,6 +56,11 @@ public class A9_YesNo_Fragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +84,14 @@ public class A9_YesNo_Fragment extends Fragment {
     public void formLoad() {
         loadListView();
         onSelectItemQuestions();
+    }
+
+    // khởi tạo menu form
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuInflater menuInflater = getActivity().getMenuInflater();
+        menuInflater.inflate(R.menu.a9_yesno_answer_complete_menu, menu);
     }
     //endregion
 
@@ -242,6 +261,32 @@ public class A9_YesNo_Fragment extends Fragment {
             return null;
         }
 
+    }
+
+    // sự kiện button hoàn tất
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        try {
+//            A9_Question_Type_Fragment typeFragment = new A9_Question_Type_Fragment();
+//            loadFragment(typeFragment);
+            getActivity().onBackPressed();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // Load Fragment
+    private void loadFragment(Fragment fragment) {
+        try {
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.frame_container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //endregion
