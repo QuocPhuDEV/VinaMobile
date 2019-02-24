@@ -327,7 +327,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
                     clsQues.setLoaiCH("");
 
                     // thêm dữ liệu vào list
-                    QuesID = clsQues.getMaCH();
+                    QuesID = clsQues.getCauHoi();
 
                 } while (cursor.moveToNext());
             }

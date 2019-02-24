@@ -75,7 +75,8 @@ public class A9_History_Adapter extends BaseAdapter {
 
             // Lấy câu hỏi theo mã
             String CauHoi;
-            A9_DBHelper a9_dbHelper = new A9_DBHelper(null);
+            Context context = viewGroup.getContext();
+            A9_DBHelper a9_dbHelper = new A9_DBHelper(viewGroup.getContext());
             CauHoi = a9_dbHelper.getAllQuestionWithID(answerList.get(i).getMaCH());
 
             // Gán giá trị cho textView;
