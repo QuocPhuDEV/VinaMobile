@@ -75,13 +75,13 @@ public class A9_History_Adapter extends BaseAdapter {
 
             // Lấy câu hỏi theo mã
             String CauHoi;
-            Context context = viewGroup.getContext();
-            A9_DBHelper a9_dbHelper = new A9_DBHelper(viewGroup.getContext());
+            A9_DBHelper a9_dbHelper = new A9_DBHelper(context);
             CauHoi = a9_dbHelper.getAllQuestionWithID(answerList.get(i).getMaCH());
 
             // Gán giá trị cho textView;
+            String title = context.getString(R.string.a9_title_answer)+ " ";
             viewHolder.tvQues.setText(CauHoi);
-            viewHolder.tvAnswer.setText(answerList.get(i).getTraLoi());
+            viewHolder.tvAnswer.setText(title + answerList.get(i).getTraLoi());
             viewHolder.tvTime.setText(answerList.get(i).getThoiGian());
 
             return view;

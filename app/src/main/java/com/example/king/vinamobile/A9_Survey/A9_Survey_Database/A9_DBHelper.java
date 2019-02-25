@@ -201,7 +201,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
     }
     //endregion
 
-    //region SEARCH DỮ LIỆU
+    //region XỬ LÝ EVENT
 
     // Search loại câu hỏi
     public List<A9_Cls_Question> getAllQuestionType() {
@@ -237,7 +237,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Search câu hỏi
+    // Search câu hỏi theo loại
     public List<A9_Cls_Question> getAllQuestion(String quesType) {
         try {
             List<A9_Cls_Question> typeList = new ArrayList<A9_Cls_Question>();
@@ -271,7 +271,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Search ID câu hỏi
+    // Search ID  theo câu hỏi
     public String getAllQuestionID(String question) {
         try {
             String QuesID = "";
@@ -311,7 +311,7 @@ public class A9_DBHelper extends SQLiteOpenHelper {
             String QuesID = "";
 
             // Script query search
-            String script = "SELECT " + TBM_QUES_NAME  + " FROM " + TABLE_NAME_QUESTION
+            String script = "SELECT " + TBM_QUES_NAME + " FROM " + TABLE_NAME_QUESTION
                     + " WHERE " + TBM_QUES_ID + " = '" + MaCH + "'";
 
             // khởi tạo đối tượng SQLite
@@ -391,5 +391,41 @@ public class A9_DBHelper extends SQLiteOpenHelper {
             return 0;
         }
     }
+
+    // Đếm loại câu hỏi đã trả lời
+    public int getCountQuesAnswer(String Questype) {
+        try {
+            String countQuery = "SELECT * FROM " + TABLE_NAME_ANSWER
+                    + " WHERE " + TBM_ANSWER_MACH
+                    + " IN ( SELECT " + TBM_ANSWER_MACH + " FROM " + TABLE_NAME_QUESTION
+                    + " WHERE " + TBM_QUES_TYPE + " = '" + Questype + "' )";
+            SQLiteDatabase database = this.getReadableDatabase();
+
+            Cursor cursor = database.rawQuery(countQuery, null);
+
+            int count = cursor.getCount();
+
+            cursor.close();
+
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    // Xóa câu trả lời
+    public boolean deleteAnswer(String MaCH) {
+        try {
+            // Khởi tạo đối tượng SQLite
+            SQLiteDatabase database = this.getWritableDatabase();
+
+            return database.delete(TABLE_NAME_ANSWER, TBM_ANSWER_MACH + " = '" + MaCH + "'", null) > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     //endregion
 }

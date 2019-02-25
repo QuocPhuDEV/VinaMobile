@@ -49,8 +49,6 @@ public class A9_Cls_Answer  implements Serializable {
 
     @Override
     public String toString() {
-        return "A9_Cls_Answer{" +
-                "TraLoi='" + TraLoi + '\'' +
-                '}';
+        return MaCH;
     }
 }

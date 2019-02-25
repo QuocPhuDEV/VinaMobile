@@ -2,11 +2,16 @@ package com.example.king.vinamobile.A9_Survey.A9_Survey_History;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.king.vinamobile.A9_Survey.A9_Survey_Class.A9_Cls_Answer;
 import com.example.king.vinamobile.A9_Survey.A9_Survey_Database.A9_DBHelper;
@@ -31,7 +36,6 @@ public class A9_History_Fragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,6 +44,8 @@ public class A9_History_Fragment extends Fragment {
 
             // ánh xạ
             listView = (ListView) view.findViewById(R.id.a9_list_content_his);
+
+            registerForContextMenu(listView);
 
             // gọi sự kiện load form
             formLoad();
@@ -53,7 +59,19 @@ public class A9_History_Fragment extends Fragment {
     //region FORM LOAD
     public void formLoad() {
         loadListView();
+        //deleteAnswer();
     }
+
+    // load context menu
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.a9_history_context_menu, menu);
+    }
+
+
+
     //endregion
 
     //region XỬ LÝ SỰ KIỆN
@@ -82,6 +100,23 @@ public class A9_History_Fragment extends Fragment {
             e.printStackTrace();
         }
 
+    }
+
+    // xử lý click chọn xóa câu trả lời
+    public void deleteAnswer() {
+        try {
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    String MaCH = answerList.get(i).toString();
+                    A9_DBHelper dbHelper = new A9_DBHelper(getContext());
+                    dbHelper.deleteAnswer(MaCH);
+                    loadListView();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     //endregion
 

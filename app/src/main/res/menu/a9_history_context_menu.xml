@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/a9_menu_item_change"
+        android:icon="@drawable/a9_img_change"
+        android:title="@string/a9_context_menu_change"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/a9_menu_item_delete"
+        android:title="@string/a9_context_menu_delete" />
+
+    <item
+        android:id="@+id/a9_menu_item_cancel"
+        android:title="@string/a9_context_menu_cancel" />
+
+</menu>

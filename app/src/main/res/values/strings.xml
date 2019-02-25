@@ -114,6 +114,10 @@
 
     <!--A9 SURVEY HISTORY -->
     <string name="a9_title_answer_history">Câu hỏi đã khảo sát</string>
+    <string name="a9_title_answer">Trả lời:</string>
+    <string name="a9_context_menu_change">Thay đổi</string>
+    <string name="a9_context_menu_delete">Xóa</string>
+    <string name="a9_context_menu_cancel">Hủy</string>
 
     <!--A8 SIGN IN-->
     <string name="a8_full_name">Họ và tên</string>
