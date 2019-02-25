@@ -85,9 +85,13 @@ public class A9_Question_Type_Adapter extends BaseAdapter {
 
             viewHolder.tvQuesType.setText(questionsTypeList.get(i).getLoaiCH());
 
+            // đếm số lượng câu hỏi hiện có theo loại
             A9_DBHelper dbHelper = new A9_DBHelper(context);
             int countType = dbHelper.getCountQuesType(type);
-            viewHolder.tvQuesCount.setText("0/" + countType);
+
+            // đếm số câu trả lời tương ứng theo loại
+            int countAnswer = dbHelper.getCountQuesAnswer(type);
+            viewHolder.tvQuesCount.setText(countAnswer + "/" + countType);
 
             return view;
 
