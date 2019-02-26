@@ -248,8 +248,8 @@ public class A9_YesNo_Fragment extends Fragment {
 
     // Xử lý format số điện thoại
     public String changeFormatPhoneNumber(String phoneNumber) {
-        String mPhoneNumber = "";
         try {
+            String mPhoneNumber;
             if (phoneNumber.indexOf("+") != -1) {
                 mPhoneNumber = phoneNumber.replace("+84", "0");
             } else {
