@@ -12,7 +12,6 @@ import android.widget.Button;
 
 import com.example.king.vinamobile.A9_Survey.A9_Survey.A9_Question_Type_Fragment;
 import com.example.king.vinamobile.A9_Survey.A9_Survey_History.A9_His_Fragment;
-import com.example.king.vinamobile.A9_Survey.A9_Survey_History.A9_History_Fragment;
 import com.example.king.vinamobile.R;
 
 /**

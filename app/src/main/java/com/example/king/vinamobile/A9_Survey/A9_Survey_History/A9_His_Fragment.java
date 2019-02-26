@@ -118,7 +118,7 @@ public class A9_His_Fragment extends Fragment {
                     // set màu cho button
                     itemChange.setBackground(R.drawable.a9_radius_button_change);
                     // set icon cho button
-                    itemChange.setIcon(R.drawable.a9_img_change);
+                    itemChange.setIcon(R.drawable.change);
                     // set width cho button
                     itemChange.setWidth(dp2px(80));
                     // add menu
@@ -129,7 +129,7 @@ public class A9_His_Fragment extends Fragment {
                     // set màu cho button
                     itemDelete.setBackground(R.drawable.a9_radius_button_delete);
                     // set icon cho button
-                    itemDelete.setIcon(R.drawable.a9_item_his_answer_trash);
+                    itemDelete.setIcon(R.drawable.delete);
                     // set width cho button
                     itemDelete.setWidth(dp2px(80));
                     // add menu

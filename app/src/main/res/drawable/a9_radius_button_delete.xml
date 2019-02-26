@@ -3,12 +3,12 @@
     android:shape="rectangle">
 
     <!-- Set màu nền-->
-    <solid android:color="@color/crimson"></solid>
+    <solid android:color="@color/white_smoke"></solid>
 
     <!-- đặt thuộc tính màu và độ rộng của đường viền -->
     <stroke
-        android:width="1dp"
-        android:color="#ffffff"></stroke>
+        android:width="2dp"
+        android:color="@color/white"></stroke>
 
     <!-- các thuộc tính căn chỉnh-->
     <padding

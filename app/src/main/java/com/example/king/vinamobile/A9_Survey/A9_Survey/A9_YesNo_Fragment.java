@@ -144,7 +144,6 @@ public class A9_YesNo_Fragment extends Fragment {
 //                        view.setBackgroundColor(getResources().getColor(R.color.blue));
 //                    }
 
-
                 }
             });
         } catch (Exception e) {
