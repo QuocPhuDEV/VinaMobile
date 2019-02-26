@@ -118,6 +118,7 @@
     <string name="a9_context_menu_change">Thay đổi</string>
     <string name="a9_context_menu_delete">Xóa</string>
     <string name="a9_context_menu_cancel">Hủy</string>
+    <string name="a9_title_message_confirm_delete">Bạn muốn xóa câu trả lời ?</string>
 
     <!--A8 SIGN IN-->
     <string name="a8_full_name">Họ và tên</string>
@@ -140,7 +141,6 @@
     <string name="a8_error_empty_zone">Chưa chọn khu vực</string>
     <string name="a8_error_empty_city">Chưa chọn Tỉnh/TP</string>
     <string name="a8_error_empty_county">Chưa chọn Quận/Huyện</string>
-
 
 
 </resources>

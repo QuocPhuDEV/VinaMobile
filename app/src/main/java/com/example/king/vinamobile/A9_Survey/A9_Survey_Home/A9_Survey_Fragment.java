@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.king.vinamobile.A9_Survey.A9_Survey.A9_Question_Type_Fragment;
+import com.example.king.vinamobile.A9_Survey.A9_Survey_History.A9_His_Fragment;
 import com.example.king.vinamobile.A9_Survey.A9_Survey_History.A9_History_Fragment;
 import com.example.king.vinamobile.R;
 
@@ -69,7 +70,7 @@ public class A9_Survey_Fragment extends Fragment {
             menu_History.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    A9_History_Fragment a9_history_fragment = new A9_History_Fragment();
+                    A9_His_Fragment a9_history_fragment = new A9_His_Fragment();
                     loadFragment(a9_history_fragment);
                 }
             });
